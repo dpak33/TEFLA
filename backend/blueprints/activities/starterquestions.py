@@ -258,5 +258,85 @@ quiz_questions = [
         "correct_answer": "gold",
         "weight": 3,
         "level": "B2"
+    },
+{
+        "text": "",
+        "question": "Despite her verbose explanations, she rarely made _______.",
+        "options": [],
+        "correct_answer": "sense",
+        "weight": 4,
+        "level": "C1"
+    },
+    {
+        "text": "",
+        "question": "He was hesitant to disclose the information due to its _______ nature.",
+        "options": [],
+        "correct_answer": "confidential",
+        "weight": 4,
+        "level": "C2"
+    },
+    {
+        "text": "",
+        "question": "The _______ of the economic downturn took everyone by surprise.",
+        "options": [],
+        "correct_answer": "magnitude",
+        "weight": 4,
+        "level": "C1"
+    },
+    {
+        "text": "",
+        "question": "The company has a strict policy against any form of _______ in the workplace.",
+        "options": [],
+        "correct_answer": "discrimination",
+        "weight": 4,
+        "level": "C1"
+    },
+    {
+        "text": "",
+        "question": "She has an _______ talent for playing the violin.",
+        "options": [],
+        "correct_answer": "inherent",
+        "weight": 4,
+        "level": "C1"
+    },
+    {
+        "text": "",
+        "question": "Given the complexities of the project, it's _______ that we will need more time.",
+        "options": [],
+        "correct_answer": "inevitable",
+        "weight": 4,
+        "level": "C2"
+    },
+    {
+        "text": "",
+        "question": "It's of paramount _______ that we address this issue immediately.",
+        "options": [],
+        "correct_answer": "importance",
+        "weight": 4,
+        "level": "C2"
+    },
+    {
+        "text": "",
+        "question": "She gave a(n) _______ account of her travels around the world.",
+        "options": [],
+        "correct_answer": "enthralling",
+        "weight": 4,
+        "level": "C1"
+    },
+    {
+        "text": "",
+        "question": "If you had practiced more, you _______ the competition. (to win)",
+        "options": [],
+        "correct_answer": "would have won",
+        "weight": 4,
+        "level": "C2"
+    },
+    {
+        "text": "",
+        "question": "If she _______ the truth, she would have told us. (to know)",
+        "options": [],
+        "correct_answer": "had known",
+        "weight": 4,
+        "level": "C2"
     }
 ]
