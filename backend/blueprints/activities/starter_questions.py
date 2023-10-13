@@ -1,4 +1,4 @@
-quiz_questions = [
+questions = [
     {
         "text": "",
         "question": "We _______ going to the store.",
