@@ -1,9 +1,9 @@
-from flask import Blueprint, jsonify, request
+from flask import jsonify, request
 from .starter_questions import questions
 from .levels import get_rating
 from . import activities
 
-# So below we are defining sub-routes within our activities endpoint
+
 @activities.route('/quiz/questions', methods=['GET'])
 def serve_questions():
     return jsonify(questions)
