@@ -7,7 +7,7 @@ score_ranges = {
     (101, 120): "C2"
 }
 
-def get_rating(score, score_ranges):
+def get_rating(score):
     for (low, high), rating in score_ranges.items():
         if low <= score <= high:
             return rating

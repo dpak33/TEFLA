@@ -1,10 +1,5 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-
-# Initialize extensions outside of app context
-db = SQLAlchemy()
-migrate = Migrate()
+from extensions import db, migrate  # Import extensions from extensions.py
 
 app = Flask(__name__)
 
@@ -16,15 +11,15 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 migrate.init_app(app, db)
 
-# Now import your models and blueprints AFTER initializing the app and extensions
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+
+# Import your models and blueprints AFTER initializing the app and extensions
 from models import User, UserLevel
 from blueprints.activities.routes import activities
 
 app.register_blueprint(activities, url_prefix='/activities')
-
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
 
 if __name__ == '__main__':
     app.run(debug=True)
