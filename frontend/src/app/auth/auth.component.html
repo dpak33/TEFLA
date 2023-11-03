@@ -1,0 +1,10 @@
+<!-- Render components based on the value of showSignup -->
+<app-signup *ngIf="showSignup"></app-signup>
+<app-register *ngIf="!showSignup"></app-register>
+
+<!-- Toggle Button -->
+<div class="toggle-button">
+  <button (click)="toggleView()">
+    {{ showSignup ? 'Need an account? Register' : 'Already have an account? Sign Up' }}
+  </button>
+</div>
