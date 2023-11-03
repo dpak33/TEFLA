@@ -35,3 +35,10 @@ button {
   left: 50%;
   transform: translateX(-50%);
 }
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
