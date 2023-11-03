@@ -17,15 +17,6 @@ body {
     text-shadow: 2px 2px 4px #000000;
 }
 
-.auth-buttons {
-    position: fixed;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: black;
-    color: white;
-}
-
 .global-back-button {
     position: absolute;
     top: 10px;

@@ -34,6 +34,14 @@ input {
     margin-bottom: 10px;
 }
 
+.toggle-button {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: black;
+    color: white;  /* Corrected from font-color to color */
+}
 
 .auth-container {
     display: flex;
