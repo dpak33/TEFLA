@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -6,6 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
+  constructor(private router: Router) {}
+
+  goBack() {
+    this.router.navigate(['/']);}
   showSignup = true;
 
   toggleView() {

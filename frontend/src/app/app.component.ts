@@ -11,7 +11,7 @@ export class AppComponent {
 
   constructor(private router: Router) {}
 
-  navigateToAuth(): void {
-    this.router.navigate(['/auth']);
-    }
+  navigateToHome(): void {
+    this.router.navigate(['/']);
+   }
 }
