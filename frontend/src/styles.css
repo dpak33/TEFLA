@@ -18,9 +18,12 @@ body {
 }
 
 .auth-buttons {
-    position: absolute;
-    top: 3.5%;
-
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: black;
+    color: white;
 }
 
 .global-back-button {
