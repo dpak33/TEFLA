@@ -4,4 +4,20 @@ body {
     background-image: url('/assets/Babel.jpeg');
     background-size: cover;
     background-position: center;
+    font-family: 'Bangers', cursive;
 }
+
+.website-name {
+    position: absolute;
+    top: 0%;
+    left: 3%;
+    font-size: 14em;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.auth-buttons {
+    position: absolute;
+    top: 3.5%;
+}
+
