@@ -1,6 +1,7 @@
 <!-- auth.component.html -->
+<button class="global-back-button" (click)="goBack()">← Back</button>
+
 <div class="auth-container">
-    <button class="back-button" (click)="goBack()">← Back</button>
     <!-- Render components based on the value of showSignup -->
     <app-signup *ngIf="showSignup"></app-signup>
     <app-register *ngIf="!showSignup"></app-register>

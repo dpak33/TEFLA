@@ -29,29 +29,9 @@ label {
 }
 
 input {
-    width: 100%;  /* Ensure the input fields take up the full width of the form */
+    width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-}
-
-button {
-    width: 100%;  /* Ensure the button takes up the full width of the form */
-    padding: 10px;
-    background-color: black;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.back-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: none;
-    border: none;
-    font-size: 2.5em;
-    cursor: pointer;
-    color: white;
 }
 
 .toggle-button {
@@ -59,6 +39,8 @@ button {
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
+    background: black;
+    color: white;
 }
 
 .auth-container {
@@ -68,7 +50,5 @@ button {
     height: 100vh;
     width: 100%;  /* Ensuring the container takes up the full width */
 }
-
-
 
 
