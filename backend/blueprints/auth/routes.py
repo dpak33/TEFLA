@@ -1,8 +1,8 @@
 from flask import render_template, redirect, url_for, flash, request
 from werkzeug.security import check_password_hash, generate_password_hash
 from . import auth_bp
-from yourapp.models import User
-from yourapp import db
+from backend.models import User
+from backend.extensions import db
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
