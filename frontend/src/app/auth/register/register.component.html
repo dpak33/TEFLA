@@ -1,6 +1,6 @@
 <div class="auth-form">
   <h2>Register</h2>
-  <form>
+  <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm.value)">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required><br><br>
     <label for="username">Username:</label>

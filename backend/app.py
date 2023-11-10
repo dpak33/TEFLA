@@ -1,7 +1,9 @@
 from flask import Flask
 from extensions import db, migrate  # Import extensions from extensions.py
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Configuration settings
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Obsidian1989!@localhost:5432/tefl_app_db'
