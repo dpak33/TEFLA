@@ -5,8 +5,8 @@ from models import User
 from app import db
 
 
-@auth_bp.route('/login', methods=['GET', 'POST'])
-def login():
+@auth_bp.route('/signin', methods=['GET', 'POST'])
+def signin():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
@@ -18,7 +18,7 @@ def login():
             return redirect(url_for('main.index'))  # Redirect to main page after login
         else:
             flash('Invalid username or password', 'error')
-    return render_template('auth/login.html')  # Render the login template
+    return render_template('auth/signin.html')  # Render the login template
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
