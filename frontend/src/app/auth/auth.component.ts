@@ -11,9 +11,9 @@ export class AuthComponent {
 
   goBack() {
     this.router.navigate(['/']);}
-  showSignup = true;
+  showSignin = true;
 
   toggleView() {
-    this.showSignup = !this.showSignup;
+    this.showSignin = !this.showSignin;
   }
 }

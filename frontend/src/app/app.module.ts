@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
-import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
 import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { RegisterComponent } from './auth/register/register.component';
     AppComponent,
     AuthComponent,
     HomeComponent,
-    SignupComponent,
+    SigninComponent,
     RegisterComponent
   ],
   imports: [

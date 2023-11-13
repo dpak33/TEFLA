@@ -3,13 +3,13 @@
 
 <div class="auth-container">
     <!-- Render components based on the value of showSignup -->
-    <app-signup *ngIf="showSignup"></app-signup>
-    <app-register *ngIf="!showSignup"></app-register>
+    <app-signin *ngIf="showSignin"></app-signin>
+    <app-register *ngIf="!showSignin"></app-register>
 </div>
 
 <!-- Toggle Button at the bottom -->
 <div class="toggle-button">
     <button (click)="toggleView()">
-        {{ showSignup ? 'Need an account? Register' : 'Already have an account? Sign Up' }}
+        {{ showSignin ? 'Need an account? Register' : 'Already have an account? Sign in' }}
     </button>
 </div>
