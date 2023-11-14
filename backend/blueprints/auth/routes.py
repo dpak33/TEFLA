@@ -7,18 +7,25 @@ from app import db
 
 @auth_bp.route('/signin', methods=['GET', 'POST'])
 def signin():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+    data = request.get_json()
 
-        user = User.query.filter_by(username=username).first()
-        if user and check_password_hash(user.password_hash, password):
-            # User authenticated
-            flash('Login successful! Welcome back.')
-            return redirect(url_for('main.index'))
-        else:
-            flash('Invalid username or password', 'error')
-    return render_template('auth/signin.html')
+    if not data:
+        return jsonify({"error": "Invalid JSON data"}), 400
+
+    username = data.get('username')
+    password = data.get('password')
+
+    if not username or not password:
+        return jsonify({"error": "Missing required fields"}), 400
+
+#The .first() method below is used as we expect either 0 or 1 response for each username, so no need for further sort
+
+    user = User.query.filter_by(username=username).first()
+    if user and check_password_hash(user.password_hash, password):
+        # User authenticated
+        return jsonify({"message": "Login successful! Welcome back."}), 200
+    else:
+        return jsonify({"error": "Invalid username or password"}), 401
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
