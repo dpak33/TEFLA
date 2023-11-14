@@ -8,9 +8,17 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent {
 
+  name!: string;
+  username!: string;
+  email!: string;
+  password!: string;
+
   constructor(private authService: AuthService) { }
 
   onRegister(formData: any) {
+    console.log('Form Data: ' + JSON.stringify(formData, null, 2));
+    console.log('Name: ', formData.name);
+
     this.authService.register(formData).subscribe({
       next: (response) => {
         console.log('Registration successful', response);
