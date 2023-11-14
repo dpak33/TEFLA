@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://127.0.0.1:5000/auth'; // Adjust if your API URL is different
+  private baseUrl = 'http://127.0.0.1:5000/auth';
 
   constructor(private http: HttpClient) { }
 
