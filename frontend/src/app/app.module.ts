@@ -9,6 +9,7 @@ import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RegisterComponent } from './auth/register/register.component';
     AuthComponent,
     HomeComponent,
     SigninComponent,
-    RegisterComponent
+    RegisterComponent,
+    QuizComponent
   ],
   imports: [
     HttpClientModule,
