@@ -22,8 +22,17 @@ def signin():
 
     user = User.query.filter_by(username=username).first()
     if user and check_password_hash(user.password_hash, password):
-        # User authenticated
-        return jsonify({"message": "Login successful! Welcome back."}), 200
+        first_time_sign_in = user.first_sign_in
+
+        # Update first_sign_in status if it's their first time
+        if user.first_sign_in:
+            user.first_sign_in = False
+            db.session.commit()
+
+        return jsonify({
+            "message": "Login successful! Welcome back.",
+            "firstTimeSignIn": first_time_sign_in
+        }), 200
     else:
         return jsonify({"error": "Invalid username or password"}), 401
 
