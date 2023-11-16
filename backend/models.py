@@ -8,6 +8,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)  # Store the hashed password
     level = db.relationship('UserLevel', backref='user', uselist=False)
+    first_sign_in = db.Column(db.Boolean, default=True, nullable=False)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
