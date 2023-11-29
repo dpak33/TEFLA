@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { SignInResponse } from './auth.interfaces';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,7 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/register`, userData);
   }
 
-  signin(userData: any) {
-    return this.http.post(`${this.baseUrl}/signin`, userData);
+  signin(userData: any): Observable<SignInResponse> {
+    return this.http.post<SignInResponse>(`${this.baseUrl}/signin`, userData);
   }
 }
