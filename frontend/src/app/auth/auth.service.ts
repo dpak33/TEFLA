@@ -18,4 +18,10 @@ export class AuthService {
   signin(userData: any): Observable<SignInResponse> {
     return this.http.post<SignInResponse>(`${this.baseUrl}/signin`, userData);
   }
+
+  completeQuiz(): Observable<any> {
+  // Replace with the correct endpoint and include user identification as needed
+  const testData = { username: 'DP' };
+  return this.http.post(`${this.baseUrl}/completeQuiz`, testData);
+  }
 }

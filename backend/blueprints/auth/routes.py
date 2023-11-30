@@ -61,3 +61,21 @@ def register():
     db.session.commit()
 
     return jsonify({"message": "Registration successful! Please log in."}), 200
+
+@auth_bp.route('/completeQuiz', methods=['POST'])
+def complete_quiz():
+    data = request.get_json()
+    username = data.get('username')
+
+    if not username:
+        return jsonify({"error": "Username is required"}), 400
+
+    user = User.query.filter_by(username=username).first()
+#Here is where we make the change to the complete quiz field if we receive acceptable submission
+    if user:
+        user.completed_quiz = True
+        db.session.commit()
+        return jsonify({"message": "Quiz completion status updated for user: " + username}), 200
+    else:
+        return jsonify({"error": "User not found"}), 404
+

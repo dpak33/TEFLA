@@ -9,6 +9,7 @@ class User(db.Model):
     password_hash = db.Column(db.String(128), nullable=False)  # Store the hashed password
     level = db.relationship('UserLevel', backref='user', uselist=False)
     first_sign_in = db.Column(db.Boolean, default=True, nullable=False)
+    completed_quiz = db.Column(db.Boolean, default=False, nullable=True)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
