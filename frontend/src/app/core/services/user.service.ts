@@ -1,32 +1,14 @@
 import { Injectable } from '@angular/core';
 
-export interface UserState {
-  isFirstSignIn: boolean;
-  hasCompletedQuiz: boolean;
-  currentUsername: string;  // Add username to the interface
-}
-
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private userState: UserState = {
-    isFirstSignIn: true,
-    hasCompletedQuiz: false,
-    currentUsername: ''  // Initialize username as an empty string
-  };
-
-  setUserState(state: UserState) {
-    this.userState = state;
-  }
-
-  getUserState(): UserState {
-    return this.userState;
-  }
+  private currentUsername: string | null = null;
 
   setCurrentUsername(username: string) {
-    this.userState.username = username;
+    this.currentUsername = username;
   }
 
-  getCurrentUsername(): string {
-    return this.userState.username;
+  getCurrentUsername(): string | null {
+    return this.currentUsername;
   }
 }

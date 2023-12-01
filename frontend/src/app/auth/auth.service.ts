@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SignInResponse } from './auth.interfaces';
 import { Observable } from 'rxjs';
+import { UserService } from '../core/services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
   private baseUrl = 'http://127.0.0.1:5000/auth';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userService: UserService) { } // Inject UserService here
 
   register(userData: any) {
     return this.http.post(`${this.baseUrl}/register`, userData);
@@ -20,8 +21,11 @@ export class AuthService {
   }
 
   completeQuiz(): Observable<any> {
-  // Replace with the correct endpoint and include user identification as needed
-  const testData = { username: 'DP' };
-  return this.http.post(`${this.baseUrl}/completeQuiz`, testData);
+    const username = this.userService.getCurrentUsername(); // Use UserService to get the username
+    if (!username) {
+      throw new Error('No username found'); // Or handle this case appropriately
+    }
+
+    return this.http.post(`${this.baseUrl}/completeQuiz`, { username });
   }
 }
