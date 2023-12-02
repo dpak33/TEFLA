@@ -1,9 +1,25 @@
 <div>
   <h2>Quiz Section</h2>
-  <p>This is a dummy quiz page.</p>
 
-  <!-- Display raw JSON data -->
-  <pre>{{ questions | json }}</pre>
+  <form #quizForm="ngForm">
+    <div *ngFor="let question of questions; let i = index">
+      <p>{{ i + 1 }}. {{ question.question }}</p>
 
-  <button>Complete quiz</button>
+      <!-- Multiple Choice Questions -->
+      <div *ngIf="question.options && question.options.length > 0">
+        <ul>
+          <li *ngFor="let option of question.options">
+            <input type="radio" [name]="'question' + i" [value]="option"> {{ option }}
+          </li>
+        </ul>
+      </div>
+
+      <!-- Fill-in-the-Blank Questions -->
+      <div *ngIf="!question.options || question.options.length === 0">
+        <input type="text" [name]="'question' + i">
+      </div>
+    </div>
+
+    <button>Complete quiz</button>
+  </form>
 </div>
