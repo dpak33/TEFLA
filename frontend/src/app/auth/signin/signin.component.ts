@@ -27,7 +27,7 @@ export class SigninComponent {
   //Storing user in state via user service sub-folder of core for later extraction
         this.userService.setCurrentUsername(response.username)
         if (response.firstTimeSignIn === true || response.completedQuiz === false) {
-          this.router.navigate(['/quiz']);
+          this.router.navigate(['/activities/quiz/questions']);
         }
         else {
           this.router.navigate(['/studyroom']);

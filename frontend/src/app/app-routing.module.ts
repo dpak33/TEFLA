@@ -8,7 +8,7 @@ import { StudyroomComponent } from './studyroom/studyroom.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'auth', component: AuthComponent },
-  { path: 'quiz', component: QuizComponent },
+  { path: 'activities/quiz/questions', component: QuizComponent },
   { path: 'studyroom', component: StudyroomComponent },
 ];
 

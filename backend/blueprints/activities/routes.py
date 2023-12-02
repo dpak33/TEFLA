@@ -34,13 +34,12 @@ def test_add_user():
         "proficiency_level": proficiency_level
     })
 
+
+
 @activities.route('/')
 def activities_home():
     return "Activities Home Page"
 
-@activities.route('/quiz')
-def activities_quiz():
-    return "Opening quiz"
 
 @activities.route('/start')
 def start_activities():

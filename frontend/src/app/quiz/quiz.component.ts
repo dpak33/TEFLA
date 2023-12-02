@@ -1,23 +1,21 @@
-import { Component } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { Component, OnInit } from '@angular/core';
+import { QuizService } from '../core/services/quiz.service';
 
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.css']
 })
-export class QuizComponent {
-  constructor(private authService: AuthService) {}
+export class QuizComponent implements OnInit {
+  questions: any[] = [];
 
-  onCompleteQuiz() {
-    // Send the quiz completion request
-    this.authService.completeQuiz().subscribe({
-      next: (response) => {
-        // Handle the response, such as navigating to the study room
-      },
-      error: (error) => {
-        // Handle any errors
-      }
+  constructor(private quizService: QuizService) {}
+
+  ngOnInit() {
+    this.quizService.getQuizQuestions().subscribe((data) => {
+      this.questions = data;
     });
   }
 }
+

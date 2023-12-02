@@ -1,7 +1,9 @@
-from flask import jsonify, request
-from .starter_questions import questions
-from .levels import get_rating
 from . import activities
+from app import db
+from models import User, UserLevel
+from .levels import get_rating
+from .starter_questions import questions
+from flask import request, jsonify
 
 
 @activities.route('/quiz/questions', methods=['GET'])
