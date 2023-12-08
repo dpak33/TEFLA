@@ -13,9 +13,15 @@ def serve_questions():
 @activities.route('/quiz/evaluate', methods=['POST'])
 def evaluate_quiz():
     user_answers = request.json.get('answers')
-    score = sum(question['weight'] for i, question in enumerate(questions) if user_answers[i] == question['correct_answer'])
-    proficiency_level = get_rating(score)
+    print("Received answers:", user_answers)
 
+    score = 0
+    for i, question in enumerate(questions):
+        answer_key = f"question{i}"
+        if answer_key in user_answers and user_answers[answer_key] == question['correct_answer']:
+            score += question['weight']
+
+    proficiency_level = get_rating(score)
     return jsonify({
         "score": score,
         "proficiency_level": proficiency_level

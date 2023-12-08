@@ -1,25 +1,25 @@
 <div>
   <h2>Quiz Section</h2>
 
-  <form #quizForm="ngForm">
-    <div *ngFor="let question of questions; let i = index">
-      <p>{{ i + 1 }}. {{ question.question }}</p>
+  <form #quizForm="ngForm" (ngSubmit)="submitQuiz(quizForm)">
+  <div *ngFor="let question of questions; let i = index">
+    <p>{{ i + 1 }}. {{ question.question }}</p>
 
-      <!-- Multiple Choice Questions -->
-      <div *ngIf="question.options && question.options.length > 0">
-        <ul>
-          <li *ngFor="let option of question.options">
-            <input type="radio" [name]="'question' + i" [value]="option"> {{ option }}
-          </li>
-        </ul>
-      </div>
-
-      <!-- Fill-in-the-Blank Questions -->
-      <div *ngIf="!question.options || question.options.length === 0">
-        <input type="text" [name]="'question' + i">
-      </div>
+    <!-- Multiple Choice Questions -->
+    <div *ngIf="question.options && question.options.length > 0">
+      <ul>
+        <li *ngFor="let option of question.options">
+          <input type="radio" [name]="'question' + i" [value]="option" [(ngModel)]="answers['question' + i]"> {{ option }}
+        </li>
+      </ul>
     </div>
 
-    <button>Complete quiz</button>
-  </form>
+    <!-- Fill-in-the-Blank Questions -->
+    <div *ngIf="!question.options || question.options.length === 0">
+      <input type="text" [name]="'question' + i" [(ngModel)]="answers['question' + i]">
+    </div>
+  </div>
+
+  <button type="submit">Complete quiz</button>
+</form>
 </div>
