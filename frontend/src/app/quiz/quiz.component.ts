@@ -34,12 +34,9 @@ export class QuizComponent implements OnInit {
     this.quizService.submitQuizAnswers(answers).subscribe({
       next: (response) => {
         console.log('Quiz evaluated:', response);
-        // Here you can handle the quiz results, like showing the user's level
-        // You can also navigate to another route if needed
-        // this.router.navigate(['/studyroom']); // Example navigation
 
-        // Optionally, call the completeQuiz route to update the user's status
         this.completeUserQuiz();
+        this.router.navigate(['/studyroom']);
       },
       error: (error) => {
         console.error('Error submitting quiz:', error);

@@ -13,7 +13,6 @@ def serve_questions():
 @activities.route('/quiz/evaluate', methods=['POST'])
 def evaluate_quiz():
     user_answers = request.json.get('answers')
-    print("Received answers:", user_answers)
 
     score = 0
     for i, question in enumerate(questions):
