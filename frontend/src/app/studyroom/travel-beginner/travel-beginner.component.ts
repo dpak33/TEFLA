@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./travel-beginner.component.css']
 })
 export class TravelBeginnerComponent {
+  currentPage = 1;
 
+  // Function to change page
+  changePage(pageNumber: number) {
+    this.currentPage = pageNumber;
+  }
 }
