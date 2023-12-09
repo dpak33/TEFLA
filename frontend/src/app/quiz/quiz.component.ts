@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { QuizService } from '../core/services/quiz.service';
 import { UserService } from '../core/services/user.service';
-import { Router } from '@angular/router'; // Import Router if navigation is needed
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -46,7 +46,6 @@ export class QuizComponent implements OnInit {
   }
 
   completeUserQuiz() {
-    // Assuming you have a method to get the current username
     const username = this.userService.getCurrentUsername(); // Replace with actual method to get username
     if (username) {
       this.quizService.completeQuiz(username).subscribe({

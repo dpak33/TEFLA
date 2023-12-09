@@ -11,6 +11,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { StudyroomComponent } from './studyroom/studyroom.component';
+import { TravelBeginnerComponent } from './studyroom/travel-beginner/travel-beginner.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { StudyroomComponent } from './studyroom/studyroom.component';
     SigninComponent,
     RegisterComponent,
     QuizComponent,
-    StudyroomComponent
+    StudyroomComponent,
+    TravelBeginnerComponent
   ],
   imports: [
     HttpClientModule,
