@@ -6,7 +6,15 @@
 
   <!-- Page 2 Content -->
   <section *ngIf="currentPage === 2">
-    <!-- Content for Page 2 -->
+    <h2>Modes of transport</h2>
+    <div class="transport-list">
+      <div *ngFor="let transport of transportModes" class="transport-item">
+        <img [src]="transport.imageUrl" alt="{{transport.name}}">
+        <p>{{ transport.name }}</p>
+      </div>
+    </div>
+
+
   </section>
   <button (click)="changePage(1)">Page 1</button>
   <button (click)="changePage(2)">Page 2</button>
