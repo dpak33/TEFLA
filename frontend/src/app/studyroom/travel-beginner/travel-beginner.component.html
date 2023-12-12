@@ -13,9 +13,29 @@
         <p>{{ transport.name }}</p>
       </div>
     </div>
-
-
   </section>
+  <!-- Page 3 Content -->
+
+  <section *ngIf="currentPage === 3">
+    <h2>Verbs of transport</h2>
+    <div class="transport-list">
+      <div *ngFor="let transport of transportModes" class="transport-item">
+        <p>{{ transport.conjugation }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="currentPage === 4">
+  <h2>Transport Text 1: fill in the gaps</h2>
+  <div class="transport-list">
+    <div class="transport-item">
+      <p>{{ textSamples[0].text1 }}</p>
+    </div>
+  </div>
+</section>
+
   <button (click)="changePage(1)">Page 1</button>
   <button (click)="changePage(2)">Page 2</button>
+  <button (click)="changePage(3)">Page 3</button>
+  <button (click)="changePage(4)">Page 4</button>
 </div>
