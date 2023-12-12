@@ -22,6 +22,21 @@ export class TravelBeginnerComponent {
   { name: 'Truck', conjugation: 'I drive the truck, you drive the truck, he/she/it drives the truck, we drive the truck, you drive the truck, they drive the truck', imageUrl: '../../../assets/truck.jpg' }
 ];
 
+  travelWords = [
+  { name: 'Passport', conjugation: 'I showed the passport, you showed the passport, he/she/it showed the passport, we showed the passport, you showed the passport, they showed the passport', imageUrl: 'placeholder-url/passport.jpg' },
+  { name: 'Luggage', conjugation: 'I carried the luggage, you carried the luggage, he/she/it carried the luggage, we carried the luggage, you carried the luggage, they carried the luggage', imageUrl: 'placeholder-url/luggage.jpg' },
+  { name: 'Ticket', conjugation: 'I bought the ticket, you bought the ticket, he/she/it bought the ticket, we bought the ticket, you bought the ticket, they bought the ticket', imageUrl: 'placeholder-url/ticket.jpg' },
+  { name: 'Map', conjugation: 'I used the map, you used the map, he/she/it used the map, we used the map, you used the map, they used the map', imageUrl: 'placeholder-url/map.jpg' },
+  { name: 'Hotel', conjugation: 'I stayed at the hotel, you stayed at the hotel, he/she/it stayed at the hotel, we stayed at the hotel, you stayed at the hotel, they stayed at the hotel', imageUrl: 'placeholder-url/hotel.jpg' },
+  { name: 'Suitcase', conjugation: 'I packed the suitcase, you packed the suitcase, he/she/it packed the suitcase, we packed the suitcase, you packed the suitcase, they packed the suitcase', imageUrl: 'placeholder-url/suitcase.jpg' },
+  { name: 'Backpack', conjugation: 'I brought the backpack, you brought the backpack, he/she/it brought the backpack, we brought the backpack, you brought the backpack, they brought the backpack', imageUrl: 'placeholder-url/backpack.jpg' },
+  { name: 'Tourist', conjugation: 'I met the tourist, you met the tourist, he/she/it met the tourist, we met the tourist, you met the tourist, they met the tourist', imageUrl: 'placeholder-url/tourist.jpg' },
+  { name: 'Guidebook', conjugation: 'I read the guidebook, you read the guidebook, he/she/it read the guidebook, we read the guidebook, you read the guidebook, they read the guidebook', imageUrl: 'placeholder-url/guidebook.jpg' },
+  { name: 'Souvenir', conjugation: 'I bought the souvenir, you bought the souvenir, he/she/it bought the souvenir, we bought the souvenir, you bought the souvenir, they bought the souvenir', imageUrl: 'placeholder-url/souvenir.jpg' },
+  { name: 'Destination', conjugation: 'I reached the destination, you reached the destination, he/she/it reached the destination, we reached the destination, you reached the destination, they reached the destination', imageUrl: 'placeholder-url/destination.jpg' },
+  { name: 'Itinerary', conjugation: 'I planned the itinerary, you planned the itinerary, he/she/it planned the itinerary, we planned the itinerary, you planned the itinerary, they planned the itinerary', imageUrl: 'placeholder-url/itinerary.jpg' }
+  ];
+
   textSamples = [
   {text1: `Early in the morning, Emily decided to _______ her bicycle to the nearby park. The air was fresh, and the streets were quiet. As she pedaled along, she noticed a bright yellow _______ passing by. It was full of people looking around the city. After a while, Emily reached the park and locked her bicycle. She planned to meet her friend, Mark, who would _______ the train to get there. While waiting, she watched some kids near the lake, trying to move a small boat in the water.
 

@@ -28,6 +28,13 @@
   justify-content: center;
 }
 
+.transport-text {
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
+  font-size: 5em;
+}
+
 @media (max-width: 600px) {
   .transport-list {
     grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */

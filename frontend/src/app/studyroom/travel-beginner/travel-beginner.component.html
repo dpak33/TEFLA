@@ -17,7 +17,7 @@
   <!-- Page 3 Content -->
 
   <section *ngIf="currentPage === 3">
-    <h2>Verbs of transport</h2>
+    <h2>Present tense verbs of transport</h2>
     <div class="transport-list">
       <div *ngFor="let transport of transportModes" class="transport-item">
         <p>{{ transport.conjugation }}</p>
@@ -27,11 +27,14 @@
 
   <section *ngIf="currentPage === 4">
   <h2>Transport Text 1: fill in the gaps</h2>
-  <div class="transport-list">
-    <div class="transport-item">
+  <div class="transport-text">
       <p>{{ textSamples[0].text1 }}</p>
-    </div>
   </div>
+</section>
+
+  <section *ngIf="currentPage === 5">
+  <h2>Further transport vocabulary</h2>
+
 </section>
 
   <button (click)="changePage(1)">Page 1</button>
