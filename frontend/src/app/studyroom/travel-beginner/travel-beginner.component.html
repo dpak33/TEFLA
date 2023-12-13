@@ -25,20 +25,47 @@
     </div>
   </section>
 
+  <!--Page 4 content -->
   <section *ngIf="currentPage === 4">
   <h2>Transport Text 1: fill in the gaps</h2>
   <div class="transport-text">
       <p>{{ textSamples[0].text1 }}</p>
   </div>
 </section>
-
+  <!--Page 5 -->
   <section *ngIf="currentPage === 5">
   <h2>Further transport vocabulary</h2>
-
+    <div class="transport-list">
+      <div *ngFor="let words of travelWords" class="transport-item">
+        <img [src]="words.imageUrl" alt="{{words.name}}">
+        <p>{{ words.name }}</p>
+      </div>
+    </div>
 </section>
+  <!--Page 6 -->
+  <section *ngIf="currentPage === 6">
+    <h2>Simple past tense verbs of transport</h2>
+    <div class="transport-list">
+      <div *ngFor="let words of travelWords" class="transport-item">
+        <p>{{ words.conjugation }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!--Page 7 -->
+  <section *ngIf="currentPage === 7">
+  <h2>Transport Text 2: fill in the gaps</h2>
+  <div class="transport-text">
+      <p>{{ textSamples[1].text2 }}</p>
+  </div>
+</section>
+
 
   <button (click)="changePage(1)">Page 1</button>
   <button (click)="changePage(2)">Page 2</button>
   <button (click)="changePage(3)">Page 3</button>
   <button (click)="changePage(4)">Page 4</button>
+  <button (click)="changePage(5)">Page 5</button>
+  <button (click)="changePage(6)">Page 6</button>
+  <button (click)="changePage(7)">Page 7</button>
 </div>
