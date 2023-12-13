@@ -37,6 +37,22 @@ export class TravelBeginnerComponent {
   { name: 'Itinerary', conjugation: 'I planned the itinerary, you planned the itinerary, he/she/it planned the itinerary, we planned the itinerary, you planned the itinerary, they planned the itinerary', imageUrl: '../../../assets/itinerary.jpg' }
   ];
 
+
+  hotelWords = [
+  { name: 'Lobby', conjugation: 'I will go to the lobby, you will go to the lobby, he/she/it will go to the lobby, we will go to the lobby, you will go to the lobby, they will go to the lobby', imageUrl: '../../../assets/hotel.jpg' },
+  { name: 'Room Key', conjugation: 'I will use the room key, you will use the room key, he/she/it will use the room key, we will use the room key, you will use the room key, they will use the room key', imageUrl: '../../../assets/roomkey.jpg' },
+  { name: 'Luggage', conjugation: 'I will carry the luggage, you will carry the luggage, he/she/it will carry the luggage, we will carry the luggage, you will carry the luggage, they will carry the luggage', imageUrl: '../../../assets/luggage.jpg' },
+  { name: 'Reception Desk', conjugation: 'I will check in at the reception desk, you will check in at the reception desk, he/she/it will check in at the reception desk, we will check in at the reception desk, you will check in at the reception desk, they will check in at the reception desk', imageUrl: '../../../assets/receptiondesk.jpg' },
+  { name: 'Bellhop', conjugation: 'I will tip the bellhop, you will tip the bellhop, he/she/it will tip the bellhop, we will tip the bellhop, you will tip the bellhop, they will tip the bellhop', imageUrl: '../../../assets/bellhop.jpeg' },
+  { name: 'Elevator', conjugation: 'I will take the elevator, you will take the elevator, he/she/it will take the elevator, we will take the elevator, you will take the elevator, they will take the elevator', imageUrl: '../../../assets/elevator.jpg' },
+  { name: 'Restaurant', conjugation: 'I will eat at the restaurant, you will eat at the restaurant, he/she/it will eat at the restaurant, we will eat at the restaurant, you will eat at the restaurant, they will eat at the restaurant', imageUrl: '../../../assets/restaurant.jpg' },
+  { name: 'Pool', conjugation: 'I will swim in the pool, you will swim in the pool, he/she/it will swim in the pool, we will swim in the pool, you will swim in the pool, they will swim in the pool', imageUrl: '../../../assets/pool.jpg' },
+  { name: 'Gym', conjugation: 'I will work out in the gym, you will work out in the gym, he/she/it will work out in the gym, we will work out in the gym, you will work out in the gym, they will work out in the gym', imageUrl: '../../../assets/gym.jpg' },
+  { name: 'Concierge', conjugation: 'I will ask the concierge, you will ask the concierge, he/she/it will ask the concierge, we will ask the concierge, you will ask the concierge, they will ask the concierge', imageUrl: '../../../assets/concierge.jpg' },
+  { name: 'Spa', conjugation: 'I will visit the spa, you will visit the spa, he/she/it will visit the spa, we will visit the spa, you will visit the spa, they will visit the spa', imageUrl: '../../../assets/spa.jpg' },
+  { name: 'Do Not Disturb Sign', conjugation: 'I will hang the do not disturb sign, you will hang the do not disturb sign, he/she/it will hang the do not disturb sign, we will hang the do not disturb sign, you will hang the do not disturb sign, they will hang the do not disturb sign', imageUrl: '../../../assets/do-not-disturb.jpg' }
+];
+
   textSamples = [
   {text1: `Early in the morning, Emily decided to _______ her bicycle to the nearby park. The air was fresh, and the streets were quiet. As she pedaled along, she noticed a bright yellow _______ passing by. It was full of people looking around the city. After a while, Emily reached the park and locked her bicycle. She planned to meet her friend, Mark, who would _______ the train to get there. While waiting, she watched some kids near the lake, trying to move a small boat in the water.
 
@@ -61,10 +77,25 @@ Once on the bus, Emily placed her _______ in the overhead compartment and settle
 
 Thinking about the adventures ahead, Emily planned to buy a _______ from each place she would visit. She wanted to have tangible memories of her dream _______.
 
-As the bus neared the airport, Emily looked at her _______ one last time, ensuring she had all her important travel documents. She was ready for her adventure to begin.`}
-  ]
+As the bus neared the airport, Emily looked at her _______ one last time, ensuring she had all her important travel documents. She was ready for her adventure to begin.`},
+  {text3: `Tom had planned a weekend getaway and needed to book a room at the ______. He called the ______ to check if there were any rooms available. Fortunately, there was one room left. He quickly made a reservation for two nights.
 
-  // Function to change page
+When Tom arrived at the ______, he went to the ______ to check in. The staff there asked for his ______ to verify his booking. After check-in, Tom asked the ______ for information about the local area.
+
+On the second day, Tom decided to use the ______ in the hotel. It was a pleasant surprise to find a wide variety of equipment. Later, he met a ______ in the ______ and they chatted about local attractions.
+
+In the afternoon, Tom decided to relax in the hotel's ______. Afterward, he planned to have dinner at the hotel's ______, which had good reviews.
+
+Unfortunately, Tom received a call about an urgent meeting back home. He had to check out earlier than expected. He called the ______ to inform them and then went to his room to pack his ______. Before leaving, he made sure to hang the ______ on his door to notify housekeeping.
+
+`}
+  ]
+  goToQuiz() {
+  // Navigate to the quiz page or handle the action to start the quiz
+  // Example: this.router.navigate(['/path-to-quiz']);
+}
+
+  // Change page
   changePage(pageNumber: number) {
     this.currentPage = pageNumber;
   }
