@@ -22,8 +22,10 @@ from models import User, UserLevel
 from blueprints.activities.routes import activities
 from blueprints.auth import auth_bp
 
+
 app.register_blueprint(activities, url_prefix='/activities')
 app.register_blueprint(auth_bp, url_prefix='/auth')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
