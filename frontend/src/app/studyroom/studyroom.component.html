@@ -1,3 +1,17 @@
 <p>Studyroom</p>
 
-<router-outlet></router-outlet>
+<div>
+  <nav *ngIf="!isTravelBeginnerActive">
+    <ul>
+      <li><a routerLink="/studyroom/travel-beginner">Travel Beginner</a></li>
+      <!-- other navigation links -->
+    </ul>
+  </nav>
+
+  <a *ngIf="isTravelBeginnerActive" routerLink="/studyroom">
+    <img src="path/to/back-arrow-icon.png" alt="Back to Study Room">
+  </a>
+
+  <router-outlet></router-outlet>
+</div>
+
