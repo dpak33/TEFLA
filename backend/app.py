@@ -1,8 +1,14 @@
 from flask import Flask
 from extensions import db, migrate  # Import extensions from extensions.py
 from flask_cors import CORS
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
+chat_api_key = os.getenv('CHAT_API_KEY')
+
 CORS(app)
 
 # Configuration settings
