@@ -12,6 +12,8 @@ import { RegisterComponent } from './auth/register/register.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { StudyroomComponent } from './studyroom/studyroom.component';
 import { TravelBeginnerComponent } from './studyroom/travel-beginner/travel-beginner.component';
+import { SectionQuizzesComponent } from './section-quizzes/section-quizzes.component';
+import { TravelBeginnerQuizComponent } from './section-quizzes/travel-beginner-quiz/travel-beginner-quiz.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { TravelBeginnerComponent } from './studyroom/travel-beginner/travel-begi
     RegisterComponent,
     QuizComponent,
     StudyroomComponent,
-    TravelBeginnerComponent
+    TravelBeginnerComponent,
+    SectionQuizzesComponent,
+    TravelBeginnerQuizComponent
   ],
   imports: [
     HttpClientModule,

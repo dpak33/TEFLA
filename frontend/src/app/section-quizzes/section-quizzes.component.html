@@ -1,0 +1,10 @@
+<!-- quiz.component.html -->
+<div class="quiz-container">
+  <form (ngSubmit)="onSubmit()">
+    <div *ngFor="let question of quizQuestions; let i = index">
+      <p>{{ question.text }}</p>
+      <!-- Handle different types of questions (MCQ, text input, etc.) -->
+    </div>
+    <button type="submit">Submit Quiz</button>
+  </form>
+</div>

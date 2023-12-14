@@ -10,6 +10,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'activities/quiz/questions', component: QuizComponent },
+  {path: 'section-quizzes', component: SectionQuizzesComponent,
+  { path: 'section-quizzes/:level/:topic', component: QuizComponent },
   { path: 'studyroom', component: StudyroomComponent,
    children: [
       { path: 'travel-beginner', component: TravelBeginnerComponent },
