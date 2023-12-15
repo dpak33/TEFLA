@@ -1,25 +1,28 @@
 import requests
+import os
+
+# Directly get the API key
+chat_api_key = "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"
+
 
 def generate_quiz_questions(user_level, topic):
-    # This function will send a request to the ChatGPT API
-    # Replace the URL with the actual API endpoint
-    api_url = "https://api.openai.com/v1/engines/davinci-codex/completions"
+    # ChatGPT endpoint
+    api_url = "https://api.openai.com/v1/chat/completions"
 
-    # Construct the prompt for ChatGPT
-    prompt = f"Assuming that the user is a {user_level} language learner, please generate 20 grammar and vocabulary tests on the topic of {topic}, as well as two more open-ended short-response questions. Provide these in a format that will allow them to be returned in JSON format."
+    # Construct the message for ChatGPT
+    message = f"Assuming that the user is a {user_level} language learner, please generate 20 grammar and vocabulary " \
+              f"tests on the topic of {topic}, as well as two more open-ended short-response questions."
 
     # Construct the API request data
     data = {
-        "prompt": prompt,
-        "max_tokens": 1000,  # Adjust based on the expected response length
-        "n": 1,
-        "stop": None,
+        "model": "gpt-3.5-turbo",  # Specify the model
+        "messages": [{"role": "system", "content": message}],
         "temperature": 0.7  # Adjust for creativity
     }
 
-    # Headers for the API request (include your API key here)
+    # Headers for the API request
     headers = {
-        "Authorization": "Bearer YOUR_API_KEY",
+        "Authorization": f"Bearer {chat_api_key}",
         "Content-Type": "application/json"
     }
 
@@ -31,7 +34,15 @@ def generate_quiz_questions(user_level, topic):
         response_data = response.json()
         return response_data
     else:
-        print(f"Error: {response.status_code}")
+        print(f"Error: {response.status_code}, Reason: {response.reason}")
+        if response.headers.get('Content-Type') == 'application/json':
+            try:
+                error_data = response.json()
+                print("Error details:", error_data)
+            except ValueError:
+                print("Response is not in JSON format.")
+        else:
+            print("Response:", response.text)
         return None
 
 # Example usage
