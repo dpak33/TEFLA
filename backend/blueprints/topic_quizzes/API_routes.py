@@ -1,52 +1,49 @@
+from flask import Blueprint, request, jsonify
 import requests
 import os
 
-# Directly get the API key
-chat_api_key = "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"
+topic_quizzes = Blueprint('topic_quizzes', __name__)
 
+@topic_quizzes.route('/generate_quiz', methods=['POST'])
+def generate_quiz():
+    # Extract user level and topic from request data
+    data = request.json
+    user_level = data.get('user_level')
+    topic = data.get('topic')
 
-def generate_quiz_questions(user_level, topic):
+    if not user_level or not topic:
+        return jsonify({"error": "Missing required fields"}), 400
+
     # ChatGPT endpoint
     api_url = "https://api.openai.com/v1/chat/completions"
 
     # Construct the message for ChatGPT
-    message = f"Assuming that the user is a {user_level} language learner, please generate 20 grammar and vocabulary " \
-              f"tests on the topic of {topic}, as well as two more open-ended short-response questions."
+    message = f"Assuming that the user is a {user_level} language learner, please generate 20 grammar and vocabulary tests on the topic of {topic}, as well as two more open-ended short-response questions."
 
-    # Construct the API request data
-    data = {
-        "model": "gpt-3.5-turbo",  # Specify the model
+    # API request data
+    api_data = {
+        "model": "gpt-3.5-turbo",
         "messages": [{"role": "system", "content": message}],
-        "temperature": 0.7  # Adjust for creativity
+        "temperature": 0.7
     }
 
-    # Headers for the API request
+    # API key and headers
+    chat_api_key = os.getenv('CHAT_API_KEY')
     headers = {
         "Authorization": f"Bearer {chat_api_key}",
         "Content-Type": "application/json"
     }
 
-    # Send the request to the ChatGPT API
-    response = requests.post(api_url, json=data, headers=headers)
+    # Send request to ChatGPT API
+    response = requests.post(api_url, json=api_data, headers=headers)
 
     # Handle the response
     if response.status_code == 200:
         response_data = response.json()
-        return response_data
+        return jsonify(response_data)
     else:
-        print(f"Error: {response.status_code}, Reason: {response.reason}")
-        if response.headers.get('Content-Type') == 'application/json':
-            try:
-                error_data = response.json()
-                print("Error details:", error_data)
-            except ValueError:
-                print("Response is not in JSON format.")
-        else:
-            print("Response:", response.text)
-        return None
-
-# Example usage
-user_level = "beginner"
-topic = "travel"
-quiz_questions = generate_quiz_questions(user_level, topic)
-print(quiz_questions)
+        error_message = {
+            "error": f"Error from ChatGPT API: {response.status_code}",
+            "details": response.text
+        }
+        return jsonify(error_message), response.status_code

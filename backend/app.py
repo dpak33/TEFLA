@@ -28,10 +28,12 @@ def hello_world():
 from models import User, UserLevel
 from blueprints.activities.routes import activities
 from blueprints.auth import auth_bp
+from blueprints.topic_quizzes import topic_quizzes
 
 
 app.register_blueprint(activities, url_prefix='/activities')
 app.register_blueprint(auth_bp, url_prefix='/auth')
+app.register_blueprint(topic_quizzes, url_prefix='/api')
 
 
 if __name__ == '__main__':
