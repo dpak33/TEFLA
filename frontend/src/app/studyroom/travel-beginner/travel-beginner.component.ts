@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-travel-beginner',
@@ -90,9 +91,12 @@ Unfortunately, Tom received a call about an urgent meeting back home. He had to 
 
 `}
   ]
-  goToQuiz() {
-  // Navigate to the quiz page or handle the action to start the quiz
-  // Example: this.router.navigate(['/path-to-quiz']);
+
+  constructor(private router: Router) {}
+
+  startTravelBeginnerQuiz() {
+  let level = 'beginner'; // This can be dynamic based on user's level
+  this.router.navigate(['/section-quizzes', level, 'travel-beginner-quiz']);
 }
 
   // Change page
