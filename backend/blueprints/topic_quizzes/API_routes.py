@@ -4,7 +4,7 @@ import os
 
 topic_quizzes = Blueprint('topic_quizzes', __name__)
 
-@topic_quizzes.route('/generate_quiz', methods=['POST'])
+@topic_quizzes.route('/generate_quiz', methods=['POST', 'OPTIONS'])
 def generate_quiz():
     # Extract user level and topic from request data
     data = request.json
