@@ -8,7 +8,8 @@ topic_quizzes = Blueprint('topic_quizzes', __name__)
 def generate_quiz():
     # Extract user level and topic from request data
     data = request.json
-    user_level = data.get('level')
+#labeled as user_level in service file on frontend before sending, so the below correct:
+    user_level = data.get('user_level')
     topic = data.get('topic')
 
     if not user_level or not topic:
