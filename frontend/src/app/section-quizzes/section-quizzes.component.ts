@@ -10,8 +10,8 @@ import { ChatGptService } from '../core/services/chat-gpt.service';
 export class SectionQuizzesComponent implements OnInit {
   quizQuestions: any[] = []; // To store questions from ChatGPT
   userAnswers: any = {}; // To store user's answers
-  level: string = ''; // User's level
-  topic: string = ''; // Topic of the quiz
+  level: string = 'beginner'; // User's level
+  topic: string = 'travel'; // Topic of the quiz
 
   constructor(private chatGptService: ChatGptService, private route: ActivatedRoute) {}
 
