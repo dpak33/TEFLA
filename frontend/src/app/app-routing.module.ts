@@ -12,11 +12,12 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'activities/quiz/questions', component: QuizComponent },
-  { path: 'section-quizzes/:level/:topic', component: SectionQuizzesComponent,
+  { path: 'section-quizzes/', component: SectionQuizzesComponent,
     children: [
       {path: 'travel-beginner-quiz', component: TravelBeginnerQuizComponent},
       //..other sub-routes of section-quizzes.
-    ]},
+      ]
+   },
   { path: 'studyroom', component: StudyroomComponent,
    children: [
       { path: 'travel-beginner', component: TravelBeginnerComponent },

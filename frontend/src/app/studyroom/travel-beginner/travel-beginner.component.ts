@@ -95,8 +95,7 @@ Unfortunately, Tom received a call about an urgent meeting back home. He had to 
   constructor(private router: Router) {}
 
   startTravelBeginnerQuiz() {
-  let level = 'beginner'; // This can be dynamic based on user's level
-  this.router.navigate(['/section-quizzes', level, 'travel-beginner-quiz']);
+  this.router.navigate(['/section-quizzes/travel-beginner-quiz']);
 }
 
   // Change page
