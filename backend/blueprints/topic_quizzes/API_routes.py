@@ -1,10 +1,12 @@
 from flask import Blueprint, request, jsonify
+from flask_cors import cross_origin
 import requests
 import os
 
 topic_quizzes = Blueprint('topic_quizzes', __name__)
 
 @topic_quizzes.route('/generate_quiz', methods=['POST', 'OPTIONS'])
+@cross_origin(origins="http://localhost:4200", methods=['POST', 'OPTIONS'])
 def generate_quiz():
     # Extract user level and topic from request data
     data = request.json

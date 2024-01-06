@@ -10,7 +10,7 @@ load_dotenv()
 app = Flask(__name__)
 chat_api_key = os.getenv('CHAT_API_KEY')
 
-CORS(app, resources={r"/api/*": {"origins": "*", "methods": ["POST", "OPTIONS"]}})
+CORS(app)
 
 # Configuration settings
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Obsidian1989!@localhost:5432/tefl_app_db'
