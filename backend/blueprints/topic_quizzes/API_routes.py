@@ -5,6 +5,11 @@ import os
 
 topic_quizzes = Blueprint('topic_quizzes', __name__)
 
+@topic_quizzes.route('/test_route', methods=['POST'])
+def test_route():
+    return jsonify({"message": "Test route reached"}), 200
+
+
 @topic_quizzes.route('/generate_quiz', methods=['POST', 'OPTIONS'])
 @cross_origin(origins="http://localhost:4200", methods=['POST', 'OPTIONS'])
 def generate_quiz():

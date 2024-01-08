@@ -6,6 +6,7 @@ from .starter_questions import questions
 from flask import request, jsonify
 
 
+
 @activities.route('/test_add_user', methods=['POST'])
 def test_add_user():
     # Adding a dummy user

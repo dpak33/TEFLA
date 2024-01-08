@@ -82,3 +82,9 @@ def complete_quiz():
     else:
         return jsonify({"error": "User not found"}), 404
 
+
+
+@auth_bp.route('/test_route', methods=['POST'])
+def test_route():
+    return jsonify({"message": "Test route reached"}), 200
+
