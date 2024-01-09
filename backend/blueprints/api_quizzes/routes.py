@@ -1,12 +1,12 @@
 from . import api_quizzes_bp
-from flask import jsonify, request
+from flask import jsonify, request, current_app
 import os
 import requests
 
 @api_quizzes_bp.route('/generate_quiz', methods=['POST'])
 def generate_quiz():
     data = request.get_json()
-
+    current_app.logger.info(f"Received data: {data}")
 
     user_level = data.get('user_level')
     topic = data.get('topic')

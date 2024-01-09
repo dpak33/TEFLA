@@ -95,7 +95,7 @@ Unfortunately, Tom received a call about an urgent meeting back home. He had to 
   constructor(private router: Router) {}
 
   startTravelBeginnerQuiz() {
-  this.router.navigate(['/section-quizzes/travel-beginner-quiz']);
+  this.router.navigate(['/section-quizzes', 'beginner', 'travel']);
 }
 
   // Change page
