@@ -2,13 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ChatGptService } from '../core/services/chat-gpt.service';
 
+export interface QuizQuestion {
+  type: 'multiple-choice' | 'open-ended';
+  question: string;
+  options?: string[];
+}
+
 @Component({
   selector: 'app-section-quizzes',
   templateUrl: './section-quizzes.component.html',
   styleUrls: ['./section-quizzes.component.css']
 })
 export class SectionQuizzesComponent implements OnInit {
-  quizQuestions: any[] = []; // To store questions from ChatGPT
+  quizQuestions: QuizQuestion[] = [];
   userAnswers: any = {}; // To store user's answers
   level: string = 'beginner'; // User's level
   topic: string = 'travel'; // Topic of the quiz
@@ -24,11 +30,12 @@ export class SectionQuizzesComponent implements OnInit {
   }
 
   loadQuiz(level: string, topic: string) {
-    this.chatGptService.getQuizQuestions(level, topic).subscribe(
-      questions => this.quizQuestions = questions,
-      error => console.error('Error loading quiz questions:', error)
-    );
-  }
+  this.chatGptService.getQuizQuestions(level, topic).subscribe(
+    questions => this.quizQuestions = questions,
+    error => console.error('Error loading quiz questions:', error)
+  );
+}
+
 
   // Uncomment and complete this method when you're ready to implement it
   /*onSubmit() {

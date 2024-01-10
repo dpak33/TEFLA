@@ -1,0 +1,13 @@
+.quiz-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: black;
+}
+
+p {
+  font-size: 20px;
+}
