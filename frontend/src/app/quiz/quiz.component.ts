@@ -28,13 +28,23 @@ export class QuizComponent implements OnInit {
   }
 
   submitQuiz(quizForm: NgForm) {
-    const answers = quizForm.value;
-    console.log('Submitting answers:', answers); // For debugging
+  // Extract answers from the form
+  const answers = quizForm.value;
 
-    this.quizService.submitQuizAnswers(answers).subscribe({
+  // Ensure user is defined
+  const user = this.userService.getCurrentUsername();
+
+  if (user) {
+    // Create a dynamic payload with user and answers
+    const payload = { user: { username: user }, answers };
+
+    // Log the payload for inspection
+    console.log('Payload:', payload);
+
+    // Send the request
+    this.quizService.submitQuizAnswers(payload).subscribe({
       next: (response) => {
         console.log('Quiz evaluated:', response);
-
         this.completeUserQuiz();
         this.router.navigate(['/studyroom']);
       },
@@ -43,12 +53,15 @@ export class QuizComponent implements OnInit {
         // Handle submission error appropriately
       }
     });
+  } else {
+    console.error('No user found');
   }
+}
 
   completeUserQuiz() {
-    const username = this.userService.getCurrentUsername(); // Replace with actual method to get username
-    if (username) {
-      this.quizService.completeQuiz(username).subscribe({
+    const user = this.userService.getCurrentUsername();
+    if (user) {
+      this.quizService.completeQuiz(user).subscribe({
         next: (response) => {
           console.log('Quiz completion status updated:', response);
           // Handle successful update of completion status
@@ -58,9 +71,8 @@ export class QuizComponent implements OnInit {
           // Handle error in updating status
         }
       });
-    }
-    else {
-       console.error('No username found');
+    } else {
+      console.error('No user found');
     }
   }
 }
