@@ -16,11 +16,11 @@ def evaluate_quiz():
         data = request.json  # Assuming data is in JSON format
 
         print('Received data:', data)
-        user_info = data.get('user')
-        user_answers = data.get('answers')
+        user_info = data.get('answers', {}).get('user', {})
+        user_answers = data.get('answers', {}).get('answers', {})
 
         # Extract username directly, assuming user_info is always a dictionary
-        username = user_info.get('username')
+        username = data.get('answers', {}).get('user', {}).get('username')
 
         # Assuming User model has a method to retrieve a user by username
         user = User.query.filter_by(username=username).first()
