@@ -2,6 +2,8 @@ from . import api_quizzes_bp
 from flask import jsonify, request, current_app
 import os
 import requests
+from models import User, TopicLevel
+from app import db
 
 @api_quizzes_bp.route('/generate_quiz', methods=['POST'])
 def generate_quiz():
@@ -50,3 +52,34 @@ def generate_quiz():
             "details": response.text
         }
         return jsonify(error_message), response.status_code
+
+
+@api_quizzes_bp.route('/update_topic_levels/<topic>', methods=['POST'])
+def update_topic_levels(topic):
+    try:
+        data = request.json
+        username = data.get('username')
+        level = data.get('level')
+
+        user = User.query.filter_by(username=username).first()
+
+        if user:
+            # Update or create TopicLevel record for the specified topic
+            topic_field = getattr(user, f'{topic}_level')
+
+            if topic_field:
+                topic_field.level = level
+            else:
+                new_topic_level = TopicLevel(level=level, user_id=user.id, topic_name=topic)
+                setattr(user, f'{topic}_level', new_topic_level)
+                db.session.add(new_topic_level)
+
+            db.session.commit()
+
+            return jsonify({'success': True, 'message': f'{topic.capitalize()} level updated'})
+        else:
+            return jsonify({'error': 'User not found'}), 404
+
+    except Exception as e:
+        print(f"Exception: {str(e)}")
+        return jsonify({'error': 'Internal Server Error'}), 500
