@@ -1,6 +1,7 @@
 <!-- Dynamically render quiz questions based on their type -->
 <div *ngFor="let question of quizQuestions">
   <!-- Render question text -->
+
   <p>{{ question.question }}</p>
 
   <!-- Render options for multiple-choice questions -->
@@ -14,4 +15,6 @@
   <div *ngIf="question.type === 'open-ended'">
     <textarea rows="3"></textarea>
   </div>
+
 </div>
+<button type="submit">Complete quiz</button>
