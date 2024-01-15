@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../core/services/user.service';
-import { UpdateLevelService } from '../core/services/update-level.service';
+import { UserService } from '../../core/services/user.service';
+import { UpdateLevelService } from '../../core/services/update-level.service';
 
 @Component({
   selector: 'app-update-topic-level',
@@ -9,25 +9,32 @@ import { UpdateLevelService } from '../core/services/update-level.service';
   styleUrls: ['./update-topic-level.component.css'],
 })
 export class UpdateTopicLevelComponent implements OnInit {
-  updatedLevel: string;
-  topic: string;
+  // We can use non-null assertion as we know that they will be assigned to params below
+  updatedLevel!: string;
+  topic!: string;
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private updateLevelService: UpdateLevelService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private userService: UserService,
+    private updateLevelService: UpdateLevelService
+  ) {}
 
   ngOnInit() {
     // Retrieve the parameters
-    this.route.queryParams.subscribe((params) => {
-      this.updatedLevel = params['updatedLevel'];
-      this.topic = params['topic'];
+    const queryParams = this.route.snapshot.queryParams;
+    this.updatedLevel = queryParams['updatedLevel'] || '';
+    this.topic = queryParams['topic'] || '';
 
-      // Now you have access to level and topic in this component
-      console.log('updated level:', this.updatedLevel);
-      console.log('Topic:', this.topic);
+    // Now you have access to level and topic in this component
+    console.log('updated level:', this.updatedLevel);
+    console.log('Topic:', this.topic);
 
-      // Below is where you want to send to the new route for updating the schema on the backend.
-      // I need topic, user, and level to send to the backend route: topic and level from params, user from user service
-      const user = this.userService.getCurrentUsername();
+    // Below is where you want to send to the new route for updating the schema on the backend.
+    // I need topic, user, and level to send to the backend route: topic and level from params, user from user service
+    const user = this.userService.getCurrentUsername();
 
+    // Check if required parameters are present before making the service call
+    if (user && this.topic && this.updatedLevel) {
       this.updateLevelService.submitNewLevel(user, this.topic, this.updatedLevel).subscribe(
         (response) => {
           console.log('Level updated successfully:', response);
@@ -38,6 +45,8 @@ export class UpdateTopicLevelComponent implements OnInit {
           // Handle errors as needed
         }
       );
-    });
+    } else {
+      console.error('Required parameters missing');
+    }
   }
 }
