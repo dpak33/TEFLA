@@ -46,7 +46,7 @@ export class SectionQuizzesComponent implements OnInit {
 //level in relevant route AFTER navigating to the sub-route.
 
   // Navigate to the sub-level with the updated score
-  this.router.navigate(['section-quizzes', 'update-topic-level'], {
+  this.router.navigate(['section-quizzes', 'beginner', 'travel', 'update-topic-level'], {
     queryParams: { updatedLevel: 'B1', topic: 'travel' },
   });
 }
