@@ -13,8 +13,7 @@ import { QuizComponent } from './quiz/quiz.component';
 import { StudyroomComponent } from './studyroom/studyroom.component';
 import { TravelBeginnerComponent } from './studyroom/travel-beginner/travel-beginner.component';
 import { SectionQuizzesComponent } from './section-quizzes/section-quizzes.component';
-import { TravelBeginnerQuizComponent } from './section-quizzes/travel-beginner-quiz/travel-beginner-quiz.component';
-import { UpdateTopicLevelComponent } from './section-quizzes/update-topic-level/update-topic-level.component';
+import { UpdateTopicLevelComponent } from './update-topic-level/update-topic-level.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,6 @@ import { UpdateTopicLevelComponent } from './section-quizzes/update-topic-level/
     StudyroomComponent,
     TravelBeginnerComponent,
     SectionQuizzesComponent,
-    TravelBeginnerQuizComponent,
     UpdateTopicLevelComponent
   ],
   imports: [

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../../core/services/user.service';
-import { UpdateLevelService } from '../../core/services/update-level.service';
+import { UserService } from '../core/services/user.service';
+import { UpdateLevelService } from '../core/services/update-level.service';
 
 @Component({
   selector: 'app-update-topic-level',

@@ -93,7 +93,7 @@ Unfortunately, Tom received a call about an urgent meeting back home. He had to 
   ]
 
   constructor(private router: Router) {}
-
+//Ok, so you could still add the params below when you travel to section quizzes
   startTravelBeginnerQuiz() {
   this.router.navigate(['/section-quizzes', 'beginner', 'travel']);
 }
