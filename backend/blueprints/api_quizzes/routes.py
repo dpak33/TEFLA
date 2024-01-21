@@ -20,7 +20,12 @@ def generate_quiz():
     api_url = "https://api.openai.com/v1/chat/completions"
 
         # Construct the message for ChatGPT
-    message = f"Assuming that the user is a {user_level} language learner, please generate 20 grammar and vocabulary tests on the topic of {topic}, as well as two more open-ended short-response questions."
+    message = f"Assuming that the user is a {user_level} language learner, please generate 20 multiple choice grammar and vocabulary tests on the topic of {topic}, as well as two more open-ended short-response questions at the end of the test." \
+              f"Please ensure that each of the multiple choice questions has five different options with one clear correct answer. Please ensure that each of the multi-choice questions follow this precise sort of structure: 'I ______ my luggage" \
+              f"at the airport this morning - with the options being, for example: a) left b) leave c) take d) grabbed e) will depart. For vocab questions, it might be:" \
+              f"another name for a plane ticket is a) valise b) travel document c) passport d) boarding pass e) suitcase. " \
+              f" Please also ensure that both of the open-ended questions come at the end of the test." \
+
 
         # API request data
     api_data = {
