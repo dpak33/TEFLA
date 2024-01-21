@@ -24,7 +24,15 @@ def generate_quiz():
               f"Please ensure that each of the multiple choice questions has five different options with one clear correct answer. Please ensure that each of the multi-choice questions follow this precise sort of structure: 'I ______ my luggage" \
               f"at the airport this morning - with the options being, for example: a) left b) leave c) take d) grabbed e) will depart. For vocab questions, it might be:" \
               f"another name for a plane ticket is a) valise b) travel document c) passport d) boarding pass e) suitcase. " \
-              f" Please also ensure that both of the open-ended questions come at the end of the test." \
+              f" Please also ensure that both of the open-ended questions come at the end of the test. Please do not provide any open-ended questions before" \
+              f"or during the multi-choice questions. Ensure that both open-ended questions come at the very end of the test! Please also ensure" \
+              f"that none of the multi-choice options are ambiguous. For example, the following should not be allowed: she ______ the train to work. (options: " \
+              f"a) takes b) will take c) took d) flies e) has taken. This should not be allowed as a possible question because takes, took, will take and" \
+              f"has taken are all potentially correct since we don't have any sense of time. Therefore, if you have a question like this, ensure" \
+              f"that you make the answer mutually exclusive by providing temporal or other context. For example 'she ______ the train yesterday. That" \
+              f"way we know the correct answer must be took since it happened yesterday, in the past. Finally please evaluate the open-ended question" \
+              f"with a score between 0 and 4. Please do not ignore this part of the process or we will not be able to devise a percentage score: I don't" \
+              f"care if the score between 0 and 4 is somewhat questionable: the important thing is that we also have scores for those questions too." \
 
 
         # API request data

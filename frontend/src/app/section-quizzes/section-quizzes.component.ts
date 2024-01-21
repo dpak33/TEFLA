@@ -62,7 +62,8 @@ export class SectionQuizzesComponent implements OnInit {
 }
 
 onMultipleChoiceChange(questionIndex: number, optionIndex: number) {
-  this.userAnswers[`question_${questionIndex + 1}`] = optionIndex;
+  const optionLetters = ['a', 'b', 'c', 'd', 'e'];
+  this.userAnswers[`question_${questionIndex + 1}`] = optionLetters[optionIndex];
   console.log('User Answers:', this.userAnswers);
 }
 
