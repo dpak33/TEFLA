@@ -41,8 +41,8 @@ export class ChatGptService {
   );
 }
 
-  //evaluateQuizAnswers(answers: any): Observable<any> {
+  evaluateQuizAnswers(testData: any): Observable<any> {
     // Replace with your actual Flask route for evaluating answers
-    //return this.http.post<any>(`${this.baseUrl}/evaluate-quiz`, answers);
-  //}
+    return this.http.post<any>(`${this.baseUrl}/api_quizzes/test_response`, testData);
+  }
 }

@@ -38,17 +38,32 @@ export class SectionQuizzesComponent implements OnInit {
 }
 
   completeQuiz() {
-  // Make API call to chatGPT, get the score (dummy logic for now)
-  const dummyScore = 80;
 
-// Logic to handle the score (e.g., updating user level based on topic score and existing level)
-//So will assign user level based on extraction logic for score following second call to chat. Then will update user
-//level in relevant route AFTER navigating to the sub-route.
 
-  // Navigate to the sub-level with the updated score
-  this.router.navigate(['update-topic-level'], {
-    queryParams: { updatedLevel: 'B1', topic: 'travel' },
-  });
+  // Combine original questions and user answers into a single object
+  const testData = {
+    quizQuestions: this.quizQuestions,
+    userAnswers: this.userAnswers
+  };
+
+  // Make API call to the evaluateQuizAnswers route
+  this.chatGptService.evaluateQuizAnswers(testData).subscribe(
+    result => {
+      // Handle the result from the evaluateQuizAnswers route
+      console.log('Quiz evaluation result:', result);
+
+      // Dummy logic to navigate to the update-topic-level route
+      this.router.navigate(['update-topic-level'], {
+        queryParams: { updatedLevel: 'B1', topic: 'travel' },
+      });
+    },
+    error => console.error('Error evaluating quiz answers:', error)
+  );
+}
+
+onMultipleChoiceChange(questionIndex: number, optionIndex: number) {
+  this.userAnswers[`question_${questionIndex + 1}`] = optionIndex;
+  console.log('User Answers:', this.userAnswers);
 }
 
   // Uncomment and complete this method when you're ready to implement it

@@ -32,7 +32,7 @@ export class UpdateTopicLevelComponent implements OnInit {
     // Below is where you want to send to the new route for updating the schema on the backend.
     // I need topic, user, and level to send to the backend route: topic and level from params, user from user service
     const user = this.userService.getCurrentUsername();
-
+    console.log(user)
     // Check if required parameters are present before making the service call
     if (user && this.topic && this.updatedLevel) {
       this.updateLevelService.submitNewLevel(user, this.topic, this.updatedLevel).subscribe(

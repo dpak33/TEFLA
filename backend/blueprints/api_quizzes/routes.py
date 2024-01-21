@@ -83,3 +83,64 @@ def update_topic_levels(topic):
     except Exception as e:
         print(f"Exception: {str(e)}")
         return jsonify({'error': 'Internal Server Error'}), 500
+
+
+@api_quizzes_bp.route('/test_response', methods=['POST'])
+def test_response():
+    data = request.get_json()
+    print("Received data for testing:", data)
+    return jsonify({"success": True})
+
+
+@api_quizzes_bp.route('/evaluate_quiz', methods=['POST'])
+def evaluate_quiz():
+    try:
+        data = request.json
+        user_level = data.get('user_level')
+        topic = data.get('topic')
+        user_answers = data.get('user_answers')
+
+        if not user_level or not topic or not user_answers:
+            return jsonify({"error": "Missing required fields"}), 400
+
+        # Construct the message for ChatGPT using user answers
+        # Adjust this based on your actual structure of user_answers
+        message = f"Assuming that the user is a {user_level} language learner, evaluate the following quiz answers:\n\n{user_answers}"
+
+        # API request data
+        api_data = {
+            "model": "gpt-3.5-turbo",
+            "messages": [{"role": "system", "content": message}],
+            "temperature": 0.7
+        }
+
+        # API key and headers
+        chat_api_key = os.getenv('CHAT_API_KEY')
+        headers = {
+            "Authorization": f"Bearer {chat_api_key}",
+            "Content-Type": "application/json"
+        }
+
+        # Send request to ChatGPT API - catch possible network exception from API
+        try:
+            response = requests.post(api_url, json=api_data, headers=headers)
+        except requests.RequestException as e:
+            return jsonify({"error": "Network error from external API: please wait a moment", "details": str(e)}), 500
+
+        # Handle the response
+        if response.status_code == 200:
+            response_data = response.json()
+            # Extract relevant information from the response_data if needed
+            quiz_score = response_data.get('quiz_score')
+            # You can also handle any additional logic based on the response
+            return jsonify({'success': True, 'quiz_score': quiz_score})
+        else:
+            error_message = {
+                "error": f"Error from ChatGPT API: {response.status_code}",
+                "details": response.text
+            }
+            return jsonify(error_message), response.status_code
+
+    except Exception as e:
+        print(f"Exception: {str(e)}")
+        return jsonify({'error': 'Internal Server Error'}), 500
