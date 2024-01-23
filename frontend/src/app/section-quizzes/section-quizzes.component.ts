@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ChatGptService } from '../core/services/chat-gpt.service';
 import { Router } from '@angular/router';
+import {UserService} from '../core/services/user.service';
 
 export interface QuizQuestion {
   type: 'multiple-choice' | 'open-ended';
@@ -17,25 +18,33 @@ export interface QuizQuestion {
 export class SectionQuizzesComponent implements OnInit {
   quizQuestions: QuizQuestion[] = [];
   userAnswers: any = {}; // To store user's answers
-  level: string = 'beginner'; // User's level
-  topic: string = 'travel'; // Topic of the quiz
+  //level: string = ''; // User's level
+  //topic: string = ''; // Topic of the quiz
 
-  constructor(private chatGptService: ChatGptService, private route: ActivatedRoute, private router: Router) {}
+
+  constructor(private chatGptService: ChatGptService, private userService: UserService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.level = params['level'];
-      this.topic = params['topic'];
-      this.loadQuiz(this.level, this.topic);
+      //this.level = params['level'];
+      //this.topic = params['topic'];
+//setting the level and topic for re-extraction when sending the answers with questions to chatAPI for evaluation
+      this.userService.setCurrentTopic(params['topic']);
+      this.userService.setCurrentLevel(params['level']);
+      this.loadQuiz(this.userService.getCurrentLevel(), this.userService.getCurrentTopic());
     });
   }
 
-  loadQuiz(level: string, topic: string) {
+
+  loadQuiz(level: string | null, topic: string | null) {
+  if (level != null && topic != null) {
   this.chatGptService.getQuizQuestions(level, topic).subscribe(
     questions => this.quizQuestions = questions,
     error => console.error('Error loading quiz questions:', error)
   );
-}
+  }
+};
+
 
   completeQuiz() {
 
@@ -43,7 +52,10 @@ export class SectionQuizzesComponent implements OnInit {
   // Combine original questions and user answers into a single object
   const testData = {
     quizQuestions: this.quizQuestions,
-    userAnswers: this.userAnswers
+    userAnswers: this.userAnswers,
+    userLevel: this.userService.getCurrentLevel(),
+    currentTopic: this.userService.getCurrentTopic(),
+    username: this.userService.getCurrentUsername()
   };
 
   // Make API call to the evaluateQuizAnswers route
