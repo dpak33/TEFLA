@@ -23,14 +23,13 @@ def generate_quiz():
     message = f"Assuming that the user is a {user_level} language learner, please generate 20 multiple choice grammar and vocabulary tests on the topic of {topic}, as well as two more open-ended short-response questions at the end of the test." \
               f"Please ensure that each of the multiple choice questions has five different options with one clear correct answer. Please ensure that each of the multi-choice questions follow this precise sort of structure: 'I ______ my luggage" \
               f"at the airport this morning - with the options being, for example: a) left b) leave c) take d) grabbed e) will depart. For vocab questions, it might be:" \
-              f"another name for a plane ticket is a) valise b) travel document c) passport d) boarding pass e) suitcase. With the vocab questions, you must absolutely make sure to also place" \
-              f"the different options within the options array as you will do with the grammar questions, so that they, too, can be turned into a series of radio buttons on my frontend." \
+              f"'Another name for a plane ticket is a ________.' a) valise b) travel document c) passport d) boarding pass e) suitcase. Make the formatting of the vocab and grammar questions identical." \
               f" Please also ensure that both of the open-ended questions come at the end of the test. Please do not provide any open-ended questions before" \
               f"or during the multi-choice questions. Ensure that both open-ended questions come at the very end of the test! Please also ensure" \
-              f"that none of the multi-choice options are ambiguous. For example, the following should not be allowed: she ______ the train to work. (options: " \
-              f"a) takes b) will take c) took d) flies e) has taken. This should not be allowed as a possible question because takes, took, will take and" \
+              f"that none of the multi-choice options are ambiguous. For example, the following type of question MUST NOT be allowed: she ______ the train to work. (options: " \
+              f"a) takes b) will take c) took d) flies e) has taken. This MUST NOT be allowed as a possible question because takes, took, will take and" \
               f"has taken are all potentially correct since we don't have any sense of time. Therefore, if you have a question like this, ensure" \
-              f"that you make the answer mutually exclusive by providing temporal or other context. For example 'she ______ the train yesterday. That" \
+              f"that you make the answer mutually exclusive by providing temporal or other context: provide such context in EVERY question if possible to eliminate ambiguity. For example 'she ______ the train yesterday. That" \
               f"way we know the correct answer must be took since it happened yesterday, in the past. Finally please evaluate the open-ended question" \
               f"with a score between 0 and 4. Please do not ignore this part of the process or we will not be able to devise a percentage score: I don't" \
               f"care if the score between 0 and 4 is somewhat questionable: the important thing is that we also have scores for those questions too." \
@@ -102,7 +101,15 @@ def update_topic_levels(topic):
 @api_quizzes_bp.route('/test_response', methods=['POST'])
 def test_response():
     data = request.get_json()
+    username = data.get('username')
+    currentTopic = data.get('currentTopic')
+    userLevel = data.get('userLevel')
+
     print("Received data for testing:", data)
+    print("Username: ", username)
+    print("current topic: ", currentTopic)
+    print("user level:", userLevel)
+
     return jsonify({"success": True})
 
 
