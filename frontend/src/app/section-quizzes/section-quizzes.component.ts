@@ -55,7 +55,7 @@ export class SectionQuizzesComponent implements OnInit {
     userAnswers: this.userAnswers,
     userLevel: this.userService.getCurrentLevel(),
     currentTopic: this.userService.getCurrentTopic(),
-    username: this.userService.getCurrentUsername()
+    //username: this.userService.getCurrentUsername()
   };
 
   // Make API call to the evaluateQuizAnswers route
@@ -63,10 +63,10 @@ export class SectionQuizzesComponent implements OnInit {
     result => {
       // Handle the result from the evaluateQuizAnswers route
       console.log('Quiz evaluation result:', result);
-
+      console.log('Quiz score:', result.quiz_score)
       // Dummy logic to navigate to the update-topic-level route
       this.router.navigate(['update-topic-level'], {
-        queryParams: { updatedLevel: 'B1', topic: 'travel' },
+        queryParams: { updatedLevel: result.quiz_score, topic: this.userService.getCurrentTopic() },
       });
     },
     error => console.error('Error evaluating quiz answers:', error)

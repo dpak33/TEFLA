@@ -28,11 +28,10 @@ def generate_quiz():
               f"or during the multi-choice questions. Ensure that both open-ended questions come at the very end of the test! Please also ensure" \
               f"that none of the multi-choice options are ambiguous. For example, the following type of question MUST NOT be allowed: she ______ the train to work. (options: " \
               f"a) takes b) will take c) took d) flies e) has taken. This MUST NOT be allowed as a possible question because takes, took, will take and" \
-              f"has taken are all potentially correct since we don't have any sense of time. Therefore, if you have a question like this, ensure" \
-              f"that you make the answer mutually exclusive by providing temporal or other context: provide such context in EVERY question if possible to eliminate ambiguity. For example 'she ______ the train yesterday. That" \
-              f"way we know the correct answer must be took since it happened yesterday, in the past. Finally please evaluate the open-ended question" \
-              f"with a score between 0 and 4. Please do not ignore this part of the process or we will not be able to devise a percentage score: I don't" \
-              f"care if the score between 0 and 4 is somewhat questionable: the important thing is that we also have scores for those questions too." \
+              f"has taken are all potentially correct since we don't have any sense of time. Therefore, ensure" \
+              f"that you make the answer mutually exclusive by providing temporal or other context: provide such context in EVERY question to eliminate ambiguity. For example 'she ______ the train yesterday. That" \
+              f"way we know the correct answer must be took since it happened yesterday, in the past. Or you could have 'she ______ the train tomorrow'. Then we know" \
+              f" that is should be 'will take' the train since it's in the future. Always provide temporal context to exclude multiple viable options with grammar questions!!"
 
 
         # API request data
@@ -102,13 +101,16 @@ def update_topic_levels(topic):
 def test_response():
     data = request.get_json()
     username = data.get('username')
-    currentTopic = data.get('currentTopic')
-    userLevel = data.get('userLevel')
+    current_topic = data.get('currentTopic')
+    user_level = data.get('userLevel')
 
     print("Received data for testing:", data)
     print("Username: ", username)
-    print("current topic: ", currentTopic)
-    print("user level:", userLevel)
+    print("current topic: ", current_topic)
+    print("user level:", user_level)
+
+    if not user_level or not current_topic:
+        return jsonify({"error": "Missing required fields"}), 400
 
     return jsonify({"success": True})
 
@@ -116,17 +118,28 @@ def test_response():
 @api_quizzes_bp.route('/evaluate_quiz', methods=['POST'])
 def evaluate_quiz():
     try:
-        data = request.json
-        user_level = data.get('user_level')
-        topic = data.get('topic')
-        user_answers = data.get('user_answers')
+        data = request.get_json()
+        current_topic = data.get('currentTopic')
+        user_level = data.get('userLevel')
 
-        if not user_level or not topic or not user_answers:
+        if not user_level or not current_topic:
             return jsonify({"error": "Missing required fields"}), 400
+
+        # ChatGPT endpoint
+        api_url = "https://api.openai.com/v1/chat/completions"
 
         # Construct the message for ChatGPT using user answers
         # Adjust this based on your actual structure of user_answers
-        message = f"Assuming that the user is a {user_level} language learner, evaluate the following quiz answers:\n\n{user_answers}"
+        message = f"Assuming that the user is a {user_level} language learner, evaluate the following quiz answers to a test on the" \
+                  f"topic of {current_topic}. Here are the quiz answers: {data}. As you see, the quiz questions and answers are wrapped up in the form of a single object. The multiple choice questions" \
+                  f"have only one right answer and the user scores one point for each question guessed correctly. There are no half marks etc. The last two questions" \
+                  f"are open-ended questions and are scored out of three. I understand that evaluating the open-ended questions is invariably more" \
+                  f"subjective and inexact, but it is imperative that you assign a numerical value to the student's answers to these questions as well. Otherwise" \
+                  f"it will not be possible to produce a score. After that, please return a percentage out of 100 based on the user's score in the test." \
+                  f"Please just provide the percentage value as a number without providing either the '%' sign after the number or embedding said-number" \
+                  f"within a sentence. Please just return the number - say, 65 or 82 - and a field key that corresponds" \
+                  f"to this number, which must be called: 'quiz_score'. since I will be extracting the score in my backend route" \
+                  f"like so: quiz_score = response_data.get('quiz_score'). This way I can go on to handle the number in my application subsequently. "
 
         # API request data
         api_data = {
