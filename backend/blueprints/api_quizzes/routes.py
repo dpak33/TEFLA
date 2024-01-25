@@ -20,18 +20,18 @@ def generate_quiz():
     api_url = "https://api.openai.com/v1/chat/completions"
 
         # Construct the message for ChatGPT
-    message = f"Assuming that the user is a {user_level} language learner, please generate 20 multiple choice grammar and vocabulary tests on the topic of {topic}, as well as two more open-ended short-response questions at the end of the test." \
+    message = f"Assuming that the user is a {user_level} language learner, please generate 12 multiple choice grammar questions and 12 multiple choice vocabulary questions on the topic of {topic}. Please also generate two open-ended short-response questions at the end of the test." \
               f"Please ensure that each of the multiple choice questions has five different options with one clear correct answer. Please ensure that each of the multi-choice questions follow this precise sort of structure: 'I ______ my luggage" \
               f"at the airport this morning - with the options being, for example: a) left b) leave c) take d) grabbed e) will depart. For vocab questions, it might be:" \
               f"'Another name for a plane ticket is a ________.' a) valise b) travel document c) passport d) boarding pass e) suitcase. Make the formatting of the vocab and grammar questions identical." \
               f" Please also ensure that both of the open-ended questions come at the end of the test. Please do not provide any open-ended questions before" \
-              f"or during the multi-choice questions. Ensure that both open-ended questions come at the very end of the test! Please also ensure" \
-              f"that none of the multi-choice options are ambiguous. For example, the following type of question MUST NOT be allowed: she ______ the train to work. (options: " \
+              f"or during the multi-choice questions. Ensure that both open-ended questions come at the very end of the test! Please absolutely ensure" \
+              f"that NONE of the multi-choice options have ambiguous options. For example, the following type of question MUST NOT be allowed: she ______ the train to work. (options: " \
               f"a) takes b) will take c) took d) flies e) has taken. This MUST NOT be allowed as a possible question because takes, took, will take and" \
-              f"has taken are all potentially correct since we don't have any sense of time. Therefore, ensure" \
-              f"that you make the answer mutually exclusive by providing temporal or other context: provide such context in EVERY question to eliminate ambiguity. For example 'she ______ the train yesterday. That" \
-              f"way we know the correct answer must be took since it happened yesterday, in the past. Or you could have 'she ______ the train tomorrow'. Then we know" \
-              f" that is should be 'will take' the train since it's in the future. Always provide temporal context to exclude multiple viable options with grammar questions!!"
+              f"has taken are all potentially correct since we don't have any sense of time or limiting context. Therefore, ensure" \
+              f"that you make the answer mutually exclusive by providing temporal or other context to limit the correct answer to one: provide such context in EVERY question to eliminate ambiguity. For example 'she ______ the train yesterday. That" \
+              f"way we know the correct answer must be 'took' since it happened yesterday, in the past. Or you could have 'she ______ the train tomorrow'. Then we know" \
+              f" that is should be 'will take' the train since it's in the future. ALWAYS provide temporal context to exclude multiple viable options with grammar questions!!"
 
 
         # API request data
@@ -122,6 +122,10 @@ def evaluate_quiz():
         current_topic = data.get('currentTopic')
         user_level = data.get('userLevel')
 
+        print("Received data for testing:", data)
+        print("Username: ", username)
+        print("current topic: ", current_topic)
+
         if not user_level or not current_topic:
             return jsonify({"error": "Missing required fields"}), 400
 
@@ -164,6 +168,7 @@ def evaluate_quiz():
         # Handle the response
         if response.status_code == 200:
             response_data = response.json()
+            print("Api response: ", response_data)
             # Extract relevant information from the response_data if needed
             quiz_score = response_data.get('quiz_score')
             # You can also handle any additional logic based on the response
