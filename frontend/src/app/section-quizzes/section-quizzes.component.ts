@@ -47,7 +47,16 @@ export class SectionQuizzesComponent implements OnInit {
 
 
   completeQuiz() {
+  const unansweredQuestions = this.quizQuestions.filter((question, index) => {
+    const userAnswer = this.userAnswers[`question_${index + 1}`];
+    return question.type === 'multiple-choice' && userAnswer === undefined;
+  });
 
+  if (unansweredQuestions.length > 0) {
+    // Notify the user about unanswered questions, you can customize this based on your UI/UX
+    alert('Please answer all questions before completing the quiz.');
+    return;
+  }
 
   // Combine original questions and user answers into a single object
   const testData = {
