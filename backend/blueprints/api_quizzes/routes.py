@@ -123,7 +123,6 @@ def evaluate_quiz():
         user_level = data.get('userLevel')
 
         print("Received data for testing:", data)
-        print("Username: ", username)
         print("current topic: ", current_topic)
 
         if not user_level or not current_topic:
@@ -134,21 +133,15 @@ def evaluate_quiz():
 
         # Construct the message for ChatGPT using user answers
         # Adjust this based on your actual structure of user_answers
-        message = f"Assuming that the user is a {user_level} language learner, evaluate the following quiz answers to a test on the" \
-                  f"topic of {current_topic}. Here are the quiz answers: {data}. As you see, the quiz questions and answers are wrapped up in the form of a single object. The multiple choice questions" \
-                  f"have only one right answer and the user scores one point for each question guessed correctly. There are no half marks etc. The last two questions" \
-                  f"are open-ended questions and are scored out of three. I understand that evaluating the open-ended questions is invariably more" \
-                  f"subjective and inexact, but it is imperative that you assign a numerical value to the student's answers to these questions as well. Otherwise" \
-                  f"it will not be possible to produce a score. After that, please return a percentage out of 100 based on the user's score in the test." \
-                  f"Please just provide the percentage value as a number without providing either the '%' sign after the number or embedding said-number" \
-                  f"within a sentence. Please just return the number - say, 65 or 82 - and a field key that corresponds" \
-                  f"to this number, which must be called: 'quiz_score'. since I will be extracting the score in my backend route" \
-                  f"like so: quiz_score = response_data.get('quiz_score'). This way I can go on to handle the number in my application subsequently. "
+        message = f"Assuming the user is a {user_level} language learner, evaluate the following quiz answers for a test on the topic of {current_topic}. Here are the quiz answers: {data}. The multiple-choice questions have only one correct answer, and the user scores one point for each correct answer. There are no half marks. The last two questions are open-ended and are scored out of three points each. Note that if a question is left unanswered, the user gets 0 points for that question. Ensure that you include unanswered questions in the overall score calculation. For example, if a user only answers four questions, their maximum score will be 4/30 * 100 = 13.3333%. That's because there are 24 multi-choice questions, each worth one mark, and two open-ended questions, each worth three marks. Please provide the percentage value as a number without the '%' sign or any additional text. Return only the number, such as 65, 82, or 58. Do not include a full stop, period, or '%' mark. Calculate the score and return the percentage. DO NOT SHOW HOW TO CALCULATE IT IN CODE OR ARITHMETICALLY. Just calculate the score and return it."
 
         # API request data
         api_data = {
             "model": "gpt-3.5-turbo",
-            "messages": [{"role": "system", "content": message}],
+            "messages": [
+                {"role": "system", "content": message},
+                {"role": "user", "content": "Provide the quiz score as a percentage."}
+            ],
             "temperature": 0.7
         }
 
@@ -170,7 +163,15 @@ def evaluate_quiz():
             response_data = response.json()
             print("Api response: ", response_data)
             # Extract relevant information from the response_data if needed
-            quiz_score = response_data.get('quiz_score')
+            quiz_score = ""
+            quiz_score_message = response_data['choices'][0]['message']['content']
+            quiz_score_message = quiz_score_message.rstrip('.')
+            for char in quiz_score_message:
+                if char.isdigit() or char == '.':
+                    quiz_score += char
+
+            quiz_score = float(quiz_score)
+
             # You can also handle any additional logic based on the response
             return jsonify({'success': True, 'quiz_score': quiz_score})
         else:
