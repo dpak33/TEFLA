@@ -34,7 +34,7 @@ export class UpdateTopicLevelComponent implements OnInit {
     const user = this.userService.getCurrentUsername();
     console.log(user)
     // Check if required parameters are present before making the service call
-    if (user && this.topic && this.updatedLevel) {
+    if (user && this.topic && this.updatedLevel && this.updatedLevel != 'unchanged') {
       this.updateLevelService.submitNewLevel(user, this.topic, this.updatedLevel).subscribe(
         (response) => {
           console.log('Level updated successfully:', response);
@@ -46,7 +46,7 @@ export class UpdateTopicLevelComponent implements OnInit {
         }
       );
     } else {
-      console.error('Required parameters missing');
+      console.error('Required parameters missing or level unchanged from before.');
     }
   }
 }

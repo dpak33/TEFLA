@@ -2,7 +2,7 @@ interface LevelMappings {
   [key: string]: { [key: number]: string };
 }
 
-function calculateNewLevel(quizScore: number, currentLevel: string, levelMappings: LevelMappings): string {
+export function calculateNewLevel(quizScore: number, currentLevel: string, levelMappings: LevelMappings): string {
   const thresholds = levelMappings[currentLevel];
 
   if (thresholds) {
@@ -32,5 +32,7 @@ const levelMappings: LevelMappings = {
   // Add more levels as needed
 };
 
-const newLevel = calculateNewLevel(80, "beginner", levelMappings);
-console.log(newLevel);
+export { levelMappings };
+
+//const newLevel: string = calculateNewLevel(80, "beginner", levelMappings);
+//console.log(newLevel);

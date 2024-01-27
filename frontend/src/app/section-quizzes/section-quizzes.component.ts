@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ChatGptService } from '../core/services/chat-gpt.service';
 import { Router } from '@angular/router';
 import {UserService} from '../core/services/user.service';
+import {calculateNewLevel, levelMappings} from './section-quizzes.helper';
 
 export interface QuizQuestion {
   type: 'multiple-choice' | 'open-ended';
@@ -73,11 +74,16 @@ export class SectionQuizzesComponent implements OnInit {
       // Handle the result from the evaluateQuizAnswers route
       console.log('Quiz evaluation result:', result);
       console.log('Quiz score:', result.quiz_score)
-      // Will feed score into helper script, which we know is working now.
-
+      // Will feed score into helper script, which we now know is working. Then pass new level from helper with current topic to update
+      //user level. If string reads unchanged within user level, we will not update backend route. Else we will.
+      let quiz_score = parseFloat(result.quiz_score);
+      let newLevel: string = "";
+      if (this.userService.getCurrentLevel() != null) {
+          newLevel = calculateNewLevel(quiz_score, this.userService.getCurrentLevel()!, levelMappings);
+      }
 
       this.router.navigate(['update-topic-level'], {
-        queryParams: { updatedLevel: result.quiz_score, topic: this.userService.getCurrentTopic() },
+        queryParams: { updatedLevel: newLevel, topic: this.userService.getCurrentTopic() },
       });
     },
     error => console.error('Error evaluating quiz answers:', error)
