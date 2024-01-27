@@ -73,7 +73,9 @@ export class SectionQuizzesComponent implements OnInit {
       // Handle the result from the evaluateQuizAnswers route
       console.log('Quiz evaluation result:', result);
       console.log('Quiz score:', result.quiz_score)
-      // Dummy logic to navigate to the update-topic-level route
+      // Will feed score into helper script, which we know is working now.
+
+
       this.router.navigate(['update-topic-level'], {
         queryParams: { updatedLevel: result.quiz_score, topic: this.userService.getCurrentTopic() },
       });
