@@ -184,3 +184,75 @@ def evaluate_quiz():
     except Exception as e:
         print(f"Exception: {str(e)}")
         return jsonify({'error': 'Internal Server Error'}), 500
+
+
+@api_quizzes_bp.route('/update_total_level', methods=['POST'])
+def update_total_level():
+    data = request.get_json()
+    username = data.get('username')
+    user_level = data.get('userLevel')
+
+    if not username or not user_level:
+        return jsonify({"error": "Missing required fields"}), 400
+
+    # Fetch the user from the database
+    user = User.query.filter_by(username=username).first()
+
+    if user:
+        # Calculate the new overall level
+        new_overall_level = calculate_overall_level(user, user_level)
+
+        if new_overall_level:
+            # Update the user's overall level in the database
+            user.level.level = new_overall_level
+            db.session.commit()
+
+            return jsonify({'success': True, 'message': 'Overall level updated successfully'})
+        else:
+            return jsonify({'error': 'Invalid overall level'}), 400
+    else:
+        return jsonify({'error': 'User not found'}), 404
+
+
+
+# Dictionary mapping language levels to numerical values
+
+
+level_mapping = {
+    'A1': 1,
+    'A2': 2,
+    'B1': 3,
+    'B2': 4,
+    'C1': 5,
+    'C2': 6
+}
+
+
+# Function to calculate overall level based on topic levels
+def calculate_overall_level(user, current_user_level):
+    # Extract numerical values for each topic level
+    travel_level_value = level_mapping.get(user.travel_level.level, 0)
+    work_level_value = level_mapping.get(user.work_level.level, 0)
+    greetings_level_value = level_mapping.get(user.greetings_level.level, 0)
+
+    # Extract numerical value for the current user level
+    current_user_level_value = level_mapping.get(current_user_level, 0)
+
+    # Check conditions and update current user level accordingly
+    if travel_level_value >= current_user_level_value + 2 and \
+            work_level_value >= current_user_level_value + 2 and \
+            greetings_level_value >= current_user_level_value + 2:
+        current_user_level_value += 2
+    elif travel_level_value >= current_user_level_value + 1 and \
+            work_level_value >= current_user_level_value + 1 and \
+            greetings_level_value >= current_user_level_value + 1:
+        current_user_level_value += 1
+
+    # Ensure the new level is within the defined range
+    current_user_level_value = min(max(current_user_level_value, 1), 6)
+
+    # Reverse mapping to get the new overall level in string format
+    new_overall_level = next((level for level, value in level_mapping.items() if value == current_user_level_value),
+                             None)
+
+    return new_overall_level
