@@ -51,6 +51,10 @@ def evaluate_quiz():
                     topic_level.level = proficiency_level
                 else:
                     new_topic_level = TopicLevel(level=proficiency_level, user_id=user.id, topic_name=topic)
+
+                    setattr(user, f'{topic}_level', new_topic_level)
+                    new_topic_level.user = user
+
                     db.session.add(new_topic_level)
 
             db.session.commit()
