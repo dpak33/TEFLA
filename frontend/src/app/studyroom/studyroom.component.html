@@ -12,6 +12,17 @@
     <img src="path/to/back-arrow-icon.png" alt="Back to Study Room">
   </a>
 
+  <nav *ngIf="!isTravelIntermediateActive">
+    <ul>
+        <li><a routerLink="/studyroom/travel-intermediate">Travel Intermediate</a></li>
+        <!-- other navigation links -->
+    </ul>
+</nav>
+
+<a *ngIf="isTravelIntermediateActive" routerLink="/studyroom">
+    <img src="path/to/back-arrow-icon.png" alt="Back to Study Room">
+</a>
+
   <router-outlet></router-outlet>
 </div>
 

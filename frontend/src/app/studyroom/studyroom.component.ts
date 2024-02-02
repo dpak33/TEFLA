@@ -9,6 +9,7 @@ import { filter } from 'rxjs/operators';
 })
 export class StudyroomComponent {
   isTravelBeginnerActive: boolean = false;
+  isTravelIntermediateActive: boolean = false;
 
   constructor(private router: Router) {
     this.router.events.pipe(
@@ -17,6 +18,7 @@ export class StudyroomComponent {
     ).subscribe((event: NavigationEnd) => {
     //Change bool to true if url is travel-beginner as below:
       this.isTravelBeginnerActive = event.urlAfterRedirects.includes('/travel-beginner');
+      this.isTravelIntermediateActive = event.urlAfterRedirects.includes('/travel-intermediate');
     });
   }
 }

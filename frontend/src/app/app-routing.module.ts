@@ -5,6 +5,7 @@ import { AuthComponent } from './auth/auth.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { StudyroomComponent } from './studyroom/studyroom.component';
 import { TravelBeginnerComponent } from './studyroom/travel-beginner/travel-beginner.component';
+import { TravelIntermediateComponent } from './studyroom/travel-intermediate/travel-intermediate.component';
 import {SectionQuizzesComponent } from './section-quizzes/section-quizzes.component';
 import { UpdateTopicLevelComponent } from './update-topic-level/update-topic-level.component';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'studyroom', component: StudyroomComponent,
    children: [
       { path: 'travel-beginner', component: TravelBeginnerComponent },
+      { path: 'travel-intermediate', component: TravelIntermediateComponent },
       // ... other sub-routes under studyroom
     ]},
 ];
