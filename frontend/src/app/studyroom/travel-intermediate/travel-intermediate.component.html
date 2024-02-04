@@ -1,1 +1,28 @@
-<p>travel intermediate works!</p>
+<div class="travel-intermediate-container">
+  <section *ngIf="currentPage === 1">
+    <!-- Page 1 Content -->
+    <h1>Travel - Intermediate Level</h1>
+    <p>Welcome to the intermediate travel section! Here you'll find resources to enhance your knowledge of travel-related vocabulary and grammar.</p>
+  </section>
+
+  <!-- Page 2 Content -->
+  <section *ngIf="currentPage === 2">
+    <h2>Page 2 Content</h2>
+    <!-- Add content specific to Page 2 -->
+  </section>
+
+  <!-- Page 3 Content -->
+  <section *ngIf="currentPage === 3">
+    <h2>Page 3 Content</h2>
+    <!-- Add content specific to Page 3 -->
+  </section>
+
+  <!-- Continue for other pages... -->
+
+  <div class="navigation-buttons">
+    <button *ngIf="currentPage > 1" (click)="changePage(currentPage - 1)">Prev Page</button>
+    <button *ngIf="currentPage < 10" (click)="changePage(currentPage + 1)">Next Page</button>
+
+    <button (click)="startTravelIntermediateQuiz()">End-of-Section Quiz</button>
+  </div>
+</div>
