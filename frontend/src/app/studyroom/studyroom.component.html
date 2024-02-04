@@ -5,7 +5,16 @@
     <ul>
       <li><a *ngIf="!isTravelBeginnerActive" routerLink="/studyroom/travel-beginner">Travel Beginner</a></li>
       <li><a *ngIf="!isTravelIntermediateActive" routerLink="/studyroom/travel-intermediate">Travel Intermediate</a></li>
-      <!-- other navigation links -->
+      <li><a *ngIf="!isTravelAdvancedActive" routerLink="/studyroom/travel-advanced">Travel Advanced</a></li>
+      <!-- Add other navigation links for work options -->
+      <li><a *ngIf="!isWorkBeginnerActive" routerLink="/studyroom/work-beginner">Work Beginner</a></li>
+      <li><a *ngIf="!isWorkIntermediateActive" routerLink="/studyroom/work-intermediate">Work Intermediate</a></li>
+      <li><a *ngIf="!isWorkAdvancedActive" routerLink="/studyroom/work-advanced">Work Advanced</a></li>
+      <!-- Add other navigation links for greetings options -->
+      <li><a *ngIf="!isGreetingsBeginnerActive" routerLink="/studyroom/greetings-beginner">Greetings Beginner</a></li>
+      <li><a *ngIf="!isGreetingsIntermediateActive" routerLink="/studyroom/greetings-intermediate">Greetings Intermediate</a></li>
+      <li><a *ngIf="!isGreetingsAdvancedActive" routerLink="/studyroom/greetings-advanced">Greetings Advanced</a></li>
+      <!-- Add other navigation links for greetings options -->
     </ul>
   </nav>
 
@@ -15,4 +24,3 @@
 
   <router-outlet></router-outlet>
 </div>
-
