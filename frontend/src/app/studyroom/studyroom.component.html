@@ -1,27 +1,17 @@
 <p>Studyroom</p>
 
 <div>
-  <nav *ngIf="!isTravelBeginnerActive">
+  <nav *ngIf="!isBackToStudyRoomActive">
     <ul>
-      <li><a routerLink="/studyroom/travel-beginner">Travel Beginner</a></li>
+      <li><a *ngIf="!isTravelBeginnerActive" routerLink="/studyroom/travel-beginner">Travel Beginner</a></li>
+      <li><a *ngIf="!isTravelIntermediateActive" routerLink="/studyroom/travel-intermediate">Travel Intermediate</a></li>
       <!-- other navigation links -->
     </ul>
   </nav>
 
-  <a *ngIf="isTravelBeginnerActive" routerLink="/studyroom">
+  <a *ngIf="isBackToStudyRoomActive" routerLink="/studyroom">
     <img src="path/to/back-arrow-icon.png" alt="Back to Study Room">
   </a>
-
-  <nav *ngIf="!isTravelIntermediateActive">
-    <ul>
-        <li><a routerLink="/studyroom/travel-intermediate">Travel Intermediate</a></li>
-        <!-- other navigation links -->
-    </ul>
-</nav>
-
-<a *ngIf="isTravelIntermediateActive" routerLink="/studyroom">
-    <img src="path/to/back-arrow-icon.png" alt="Back to Study Room">
-</a>
 
   <router-outlet></router-outlet>
 </div>

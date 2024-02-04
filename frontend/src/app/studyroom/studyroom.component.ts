@@ -8,17 +8,21 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./studyroom.component.css']
 })
 export class StudyroomComponent {
-  isTravelBeginnerActive: boolean = false;
-  isTravelIntermediateActive: boolean = false;
+  isTravelBeginnerActive = false;
+  isTravelIntermediateActive = false;
+  isBackToStudyRoomActive = false;
 
   constructor(private router: Router) {
     this.router.events.pipe(
-    //below typeguard for ensuring type-safety
+      // Below typeguard for ensuring type-safety
       filter((event: RouterEvent): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-    //Change bool to true if url is travel-beginner as below:
+      // Change bool to true if url is travel-beginner or travel-intermediate
       this.isTravelBeginnerActive = event.urlAfterRedirects.includes('/travel-beginner');
       this.isTravelIntermediateActive = event.urlAfterRedirects.includes('/travel-intermediate');
+
+      // Update isBackToStudyRoomActive based on either of the travel options
+      this.isBackToStudyRoomActive = this.isTravelBeginnerActive || this.isTravelIntermediateActive;
     });
   }
 }
