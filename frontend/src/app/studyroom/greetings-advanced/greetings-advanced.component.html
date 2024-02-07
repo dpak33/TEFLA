@@ -1,0 +1,69 @@
+<div class="studyroom-container">
+  <section *ngIf="currentPage === 1">
+    <!-- Page 1 Content -->
+    <h1>Greetings Advanced Module</h1>
+    <p>Welcome to the advanced greetings module! Here you'll find resources to enhance your knowledge of advanced greetings and language usage.</p>
+  </section>
+
+  <!-- Page 2 Content -->
+<section *ngIf="currentPage === 2">
+    <img src="../../../assets/greetings.jpg" alt="Advanced Greetings Image">
+    <h2>Mastering Advanced Greetings</h2>
+
+    <!-- Formal Greetings -->
+    <h3>Formal Greetings</h3>
+    <p>
+        In language learning, mastering formal greetings is essential for various social and professional contexts. Formal greetings convey respect, courtesy, and professionalism, and understanding their nuances is crucial for effective communication. From business meetings to academic settings, proficiency in formal greetings demonstrates cultural awareness and language proficiency.
+        <em>(Formal greetings encompass expressions used in professional and respectful contexts, such as greetings in business meetings, academic environments, and official settings. They play a vital role in demonstrating cultural understanding and language proficiency.)</em>
+    </p>
+
+    <!-- Informal Greetings -->
+    <h3>Informal Greetings</h3>
+    <p>
+        Alongside formal greetings, mastering informal greetings is equally important for everyday interactions and building rapport with native speakers. Informal greetings reflect familiarity, warmth, and friendliness, allowing language learners to connect on a more personal level. Whether greeting friends, family members, or acquaintances, understanding informal greetings enriches language proficiency and cultural understanding.
+        <em>(Informal greetings consist of expressions used in casual and familiar settings, such as greetings among friends, family members, or peers. They facilitate interpersonal connections and contribute to language fluency and cultural integration.)</em>
+    </p>
+
+    <!-- Cultural Etiquette -->
+    <h3>Cultural Etiquette</h3>
+    <p>
+        Cultural etiquette plays a significant role in greetings, shaping the way individuals interact and communicate across different cultures. From handshake customs to bowing traditions, understanding cultural norms enhances cross-cultural communication and fosters mutual respect. Language learners benefit from exploring cultural etiquette associated with greetings, as it provides valuable insights into social conventions and norms.
+        <em>(Cultural etiquette encompasses customs and norms related to greetings, such as gestures, body language, and verbal expressions. It influences social interactions and communication dynamics, highlighting the importance of cultural sensitivity and awareness.)</em>
+    </p>
+
+    <!-- Regional Variations -->
+    <h3>Regional Variations</h3>
+    <p>
+        Greetings exhibit regional variations influenced by factors such as geography, history, and cultural diversity. Language learners encounter diverse greeting customs across different regions, reflecting unique linguistic expressions and social practices. Exploring regional variations in greetings enhances language proficiency and cultural literacy, enabling learners to adapt their greetings accordingly in various contexts.
+        <em>(Regional variations in greetings reflect cultural diversity and linguistic differences across different geographical areas. Understanding these variations enriches language learning and fosters appreciation for cultural nuances and diversity.)</em>
+    </p>
+
+    <!-- Conclusion -->
+    <h3>Conclusion</h3>
+    <p>
+        In conclusion, mastering advanced greetings is essential for language learners seeking to deepen their language proficiency and cultural understanding. Whether mastering formal expressions, embracing informal greetings, navigating cultural etiquette, or exploring regional variations, advanced greetings play a pivotal role in effective communication and cross-cultural interaction. By honing their greeting skills, language learners can enhance their language fluency and build meaningful connections with speakers of the target language.
+        <em>(In conclusion, advanced greetings are integral to language learning and cultural immersion, facilitating effective communication and interpersonal connections. By mastering advanced greeting expressions and cultural etiquette, language learners can navigate diverse social contexts with confidence and proficiency.)</em>
+    </p>
+</section>
+
+  <!-- Page 3 Content -->
+<section *ngIf="currentPage === 3">
+
+    <h2>Start Travel Advanced Quiz</h2>
+
+    <!-- Quiz Introduction -->
+    <p>
+        Welcome to the end-of-module quiz for the advanced greetings module. Test your knowledge and understanding of advanced greetings, cultural etiquette, and regional variations by taking this quiz. Good luck!
+        <em>(Take this quiz to assess your understanding of advanced greetings, cultural norms, and regional variations. Best of luck!)</em>
+    </p>
+
+
+</section>
+
+  <div class="navigation-buttons">
+    <button *ngIf="currentPage > 1" (click)="changePage(currentPage - 1)">Prev Page</button>
+    <button *ngIf="currentPage < 10" (click)="changePage(currentPage + 1)">Next Page</button>
+
+    <button (click)="startGreetingsAdvancedQuiz()">End-of-Section Quiz</button>
+  </div>
+</div>

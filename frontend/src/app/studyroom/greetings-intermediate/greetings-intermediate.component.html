@@ -1,1 +1,95 @@
-<p>Greetings intermediate works!</p>
+<div class="studyroom-container">
+  <section *ngIf="currentPage === 1">
+    <!-- Page 1 Content -->
+    <h1>Greetings - Intermediate Level</h1>
+    <p>Welcome to the intermediate greetings section! Here you'll find resources to further enhance your knowledge of greetings-related vocabulary and grammar.</p>
+  </section>
+
+  <section *ngIf="currentPage === 2">
+    <img src="../../../assets/greetings.jpg" alt="Greetings Intermediate Image">
+    <h2>Intermediate Guide to Greetings</h2>
+
+    <!-- Basic Greeting Etiquette -->
+    <h3>Basic Greeting Etiquette</h3>
+    <p>
+        Understanding basic greeting etiquette is essential for smooth interactions in different social contexts. Practices such as using appropriate greetings based on the time of day, acknowledging cultural differences, and showing respect through polite expressions contribute to positive social interactions.
+        <em>(Mastering basic greeting etiquette involves using appropriate greetings, acknowledging cultural differences, and showing respect through polite expressions.)</em>
+    </p>
+
+    <!-- Language Usage -->
+    <h3>Language Usage</h3>
+    <p>
+        Language is a key aspect of greetings, and learning common phrases in the local language can enhance cultural experiences. Expressions like "Hello", "Good morning", and "How are you?" bridge language barriers and demonstrate goodwill, fostering connections with native speakers.
+        <em>(Improving language skills by learning common greeting phrases in the local language facilitates meaningful interactions and cultural immersion.)</em>
+    </p>
+
+    <!-- Gestures and Non-Verbal Communication -->
+    <h3>Gestures and Non-Verbal Communication</h3>
+    <p>
+        Non-verbal communication, such as handshakes, nods, and smiles, complements verbal greetings and conveys warmth and friendliness. Understanding cultural variations in gestures and respecting personal space boundaries enhance communication effectiveness and prevent misunderstandings.
+        <em>(Recognizing the importance of non-verbal communication, such as gestures and body language, in greetings fosters positive interactions and cultural understanding.)</em>
+    </p>
+
+    <!-- Social Etiquette -->
+    <h3>Social Etiquette</h3>
+    <p>
+        Familiarizing oneself with social etiquette norms, such as maintaining eye contact, using appropriate titles, and observing personal space, contributes to successful social interactions. Adapting to social customs and norms in diverse settings demonstrates cultural awareness and promotes harmonious relationships.
+        <em>(Adapting to social etiquette norms, such as using appropriate titles and observing personal space, shows cultural awareness and facilitates respectful interactions in diverse social settings.)</em>
+    </p>
+
+    <!-- Conclusion -->
+    <h3>Conclusion</h3>
+    <p>
+        Mastering greetings at the intermediate level involves understanding cultural nuances, improving language proficiency, and embracing social etiquette. By learning common phrases, respecting non-verbal cues, and adapting to social customs, language learners can foster meaningful connections and navigate social interactions with confidence and respect.
+        <em>(In conclusion, mastering greetings at the intermediate level enhances language proficiency and cultural understanding, enabling learners to engage in respectful and meaningful interactions across different social contexts.)</em>
+    </p>
+</section>
+
+
+  <section *ngIf="currentPage === 3">
+    <h2>Intermediate Guide to Cross-Cultural Communication</h2>
+
+    <!-- Cultural Sensitivity -->
+    <h3>Cultural Sensitivity</h3>
+    <p>
+        Developing cultural sensitivity is crucial for effective cross-cultural communication. Being aware of cultural differences, avoiding stereotypes, and demonstrating openness and curiosity contribute to building trust and fostering positive relationships across cultures.
+        <em>(Enhancing cultural sensitivity by avoiding stereotypes and demonstrating openness fosters trust and positive relationships in cross-cultural communication.)</em>
+    </p>
+
+    <!-- Language Adaptation -->
+    <h3>Language Adaptation</h3>
+    <p>
+        Adapting language usage to suit cultural preferences and communication styles enhances cross-cultural communication effectiveness. Using simple language, avoiding slang or idiomatic expressions, and clarifying meanings when necessary promote clarity and understanding in diverse cultural contexts.
+        <em>(Improving cross-cultural communication effectiveness by adapting language usage to cultural preferences and avoiding language barriers facilitates clear and respectful interactions.)</em>
+    </p>
+
+    <!-- Non-Verbal Cues -->
+    <h3>Non-Verbal Cues</h3>
+    <p>
+        Non-verbal cues such as facial expressions, gestures, and body language convey additional meaning in cross-cultural communication. Paying attention to non-verbal signals, interpreting them within cultural contexts, and adapting one's own non-verbal communication style promote mutual understanding and rapport.
+        <em>(Recognizing the importance of non-verbal cues in cross-cultural communication and adapting one's own communication style fosters mutual understanding and rapport across cultures.)</em>
+    </p>
+
+    <!-- Active Listening -->
+    <h3>Active Listening</h3>
+    <p>
+        Practicing active listening techniques, such as paraphrasing, clarifying, and summarizing, enhances comprehension and empathy in cross-cultural communication. Engaging fully in conversations, demonstrating respect for diverse perspectives, and validating others' experiences contribute to building strong interpersonal connections.
+        <em>(Strengthening cross-cultural communication skills through active listening promotes comprehension, empathy, and respectful interactions in diverse cultural contexts.)</em>
+    </p>
+
+    <!-- Conclusion -->
+    <h3>Conclusion</h3>
+    <p>
+        Navigating cross-cultural communication at the intermediate level requires cultural sensitivity, language adaptation, and effective use of non-verbal cues. By fostering empathy, practicing active listening, and adapting communication styles, language learners can bridge cultural divides, build meaningful relationships, and thrive in diverse global environments.
+        <em>(In conclusion, mastering cross-cultural communication at the intermediate level enhances empathy, fosters mutual understanding, and promotes harmonious interactions across diverse cultural contexts.)</em>
+    </p>
+</section>
+
+  <div class="navigation-buttons">
+    <button *ngIf="currentPage > 1" (click)="changePage(currentPage - 1)">Prev Page</button>
+    <button *ngIf="currentPage < 10" (click)="changePage(currentPage + 1)">Next Page</button>
+
+    <button (click)="startGreetingsIntermediateQuiz()">End-of-Section Quiz</button>
+  </div>
+
+</div>

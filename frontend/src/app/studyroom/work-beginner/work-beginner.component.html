@@ -1,1 +1,133 @@
-<p>Work beginner works!</p>
+<div class="studyroom-container">
+  <section *ngIf="currentPage === 1">
+    <!-- Page 1 Content -->
+    <h1>Work - Beginner Level</h1>
+    <p>Welcome to the beginner level work module! Here you'll find resources to introduce you to basic concepts and vocabulary related to the workplace.</p>
+  </section>
+
+  <section *ngIf="currentPage === 2">
+    <h2>Introduction to Workplace Communication</h2>
+
+    <!-- Basic Workplace Vocabulary -->
+    <h3>Basic Workplace Vocabulary</h3>
+    <p>
+        Familiarize yourself with basic workplace vocabulary to navigate professional environments effectively. Terms like "office", "colleague", and "meeting" are essential for everyday communication in the workplace.
+        <em>(Basic workplace vocabulary such as "office", "colleague", and "meeting" are fundamental for effective communication in professional settings.)</em>
+    </p>
+
+    <!-- Professional Etiquette -->
+    <h3>Professional Etiquette</h3>
+    <p>
+        Learn about professional etiquette to conduct yourself appropriately in the workplace. Concepts like punctuality, respect for colleagues, and proper email etiquette are essential for building a positive professional reputation.
+        <em>(Understanding professional etiquette, including punctuality, respect for colleagues, and proper email communication, is crucial for success in the workplace.)</em>
+    </p>
+
+    <!-- Workplace Communication Skills -->
+    <h3>Workplace Communication Skills</h3>
+    <p>
+        Develop effective communication skills to convey ideas and collaborate with colleagues. Skills such as active listening, clear verbal communication, and concise writing are invaluable in professional settings.
+        <em>(Effective communication skills, including active listening, clear verbal communication, and concise writing, are essential for productive collaboration in the workplace.)</em>
+    </p>
+
+    <!-- Teamwork and Collaboration -->
+    <h3>Teamwork and Collaboration</h3>
+    <p>
+        Understand the importance of teamwork and collaboration for achieving common goals in the workplace. Collaboration tools, teamwork strategies, and interpersonal skills are essential for successful teamwork.
+        <em>(Teamwork and collaboration are vital for achieving shared objectives in the workplace. Developing collaboration tools, teamwork strategies, and interpersonal skills enhances team productivity and cohesion.)</em>
+    </p>
+
+    <!-- Conclusion -->
+    <h3>Conclusion</h3>
+    <p>
+        Introduction to workplace communication provides you with foundational knowledge and skills for success in professional environments. By mastering basic vocabulary, understanding professional etiquette, honing communication skills, and fostering teamwork, you can navigate the workplace with confidence and professionalism.
+        <em>(In conclusion, mastering foundational workplace communication skills is essential for success in professional environments. By developing vocabulary, etiquette, communication skills, and teamwork abilities, individuals can excel in their careers.)</em>
+    </p>
+</section>
+
+
+  <section *ngIf="currentPage === 3">
+    <h2>Basic Workplace Tasks and Responsibilities</h2>
+
+    <!-- Entry-Level Tasks -->
+    <h3>Entry-Level Tasks</h3>
+    <p>
+        Familiarize yourself with common entry-level tasks in the workplace. Tasks such as filing documents, answering phone calls, and scheduling appointments are typical responsibilities for entry-level employees.
+        <em>(Common entry-level tasks include filing documents, answering phone calls, and scheduling appointments, among others.)</em>
+    </p>
+
+    <!-- Workplace Responsibilities -->
+    <h3>Workplace Responsibilities</h3>
+    <p>
+        Understand your responsibilities in the workplace and fulfill them with diligence. Responsibilities may include meeting deadlines, following company policies, and collaborating with colleagues to achieve shared objectives.
+        <em>(Workplace responsibilities encompass meeting deadlines, adhering to company policies, and collaborating with colleagues to accomplish common goals.)</em>
+    </p>
+
+    <!-- Time Management -->
+    <h3>Time Management</h3>
+    <p>
+        Learn effective time management techniques to optimize productivity in the workplace. Prioritizing tasks, setting realistic goals, and minimizing distractions are essential for efficient time management.
+        <em>(Effective time management involves prioritizing tasks, setting achievable goals, and minimizing distractions to maximize productivity.)</em>
+    </p>
+
+    <!-- Professional Development -->
+    <h3>Professional Development</h3>
+    <p>
+        Invest in your professional development to advance your career prospects. Continuing education, seeking mentorship, and pursuing growth opportunities contribute to ongoing career success.
+        <em>(Professional development activities such as continuing education, mentorship, and seeking growth opportunities are essential for advancing in your career.)</em>
+    </p>
+
+    <!-- Conclusion -->
+    <h3>Conclusion</h3>
+    <p>
+        Understanding basic workplace tasks and responsibilities equips you with essential skills for success in entry-level positions. By mastering entry-level tasks, fulfilling workplace responsibilities, managing time effectively, and investing in professional development, you can lay a solid foundation for a fulfilling career.
+        <em>(In conclusion, mastering basic workplace tasks and responsibilities lays the groundwork for success in entry-level positions. By developing essential skills and investing in professional growth, individuals can thrive in their careers.)</em>
+    </p>
+</section>
+
+  <section *ngIf="currentPage === 4">
+    <h2>Effective Communication in the Workplace</h2>
+
+    <!-- Verbal Communication -->
+    <h3>Verbal Communication</h3>
+    <p>
+        Enhance your verbal communication skills to convey ideas clearly and confidently in the workplace. Speaking clearly, articulating thoughts effectively, and engaging in active listening are key components of effective verbal communication.
+        <em>(Effective verbal communication involves speaking clearly, articulating ideas effectively, and actively listening to colleagues in the workplace.)</em>
+    </p>
+
+    <!-- Written Communication -->
+    <h3>Written Communication</h3>
+    <p>
+        Develop strong written communication skills to convey information accurately and professionally. Writing clear and concise emails, reports, and documents is essential for effective written communication in the workplace.
+        <em>(Strong written communication skills, including composing clear and concise emails, reports, and documents, are crucial for professional communication in the workplace.)</em>
+    </p>
+
+    <!-- Interpersonal Skills -->
+    <h3>Interpersonal Skills</h3>
+    <p>
+        Cultivate interpersonal skills to build positive relationships with colleagues and clients. Skills such as empathy, conflict resolution, and teamwork are vital for fostering collaboration and maintaining a supportive work environment.
+        <em>(Interpersonal skills such as empathy, conflict resolution, and teamwork are essential for building relationships and fostering collaboration in the workplace.)</em>
+    </p>
+
+    <!-- Feedback and Collaboration -->
+    <h3>Feedback and Collaboration</h3>
+    <p>
+        Embrace feedback and collaboration to continuously improve your communication and work performance. Soliciting feedback, providing constructive criticism, and collaborating effectively contribute to personal and professional growth.
+        <em>(Embracing feedback and collaboration supports ongoing improvement in communication and work performance, fostering personal and professional growth in the workplace.)</em>
+    </p>
+
+    <!-- Conclusion -->
+    <h3>Conclusion</h3>
+    <p>
+        Effective communication skills are essential for success in the workplace. By honing verbal and written communication skills, developing strong interpersonal skills, and embracing feedback and collaboration, you can enhance communication effectiveness and thrive in your professional endeavors.
+        <em>(In conclusion, mastering effective communication skills is crucial for success in the workplace. By developing communication abilities and fostering collaborative relationships, individuals can achieve their career goals.)</em>
+    </p>
+</section>
+
+  <div class="navigation-buttons">
+    <button *ngIf="currentPage > 1" (click)="changePage(currentPage - 1)">Prev Page</button>
+    <button *ngIf="currentPage < 10" (click)="changePage(currentPage + 1)">Next Page</button>
+
+    <button (click)="startWorkBeginnerQuiz()">End-of-Section Quiz</button>
+  </div>
+
+</div>
