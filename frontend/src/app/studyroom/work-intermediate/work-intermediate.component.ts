@@ -11,7 +11,7 @@ export class WorkIntermediateComponent {
 
 
   constructor(private router: Router) {}
-  startWorkAdvancedQuiz() {
+  startWorkIntermediateQuiz() {
   this.router.navigate(['/section-quizzes', 'intermediate', 'work']);
   }
 
