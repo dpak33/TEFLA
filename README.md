@@ -32,3 +32,4 @@ of a consistent and cleanly packaged packet information to send to chat for eval
 directly in chatGPT, the evaluation is far more accurate, so, again, this is an area that needs to be further examined at some point. Fourthly - 
 and perhaps most importantly -, I still need to test the application more formally. I have tested it informally and by using Postman on the backend
 but clearly the application requires proper, rigorous testing in the future. I will do this in a piecemeal manner over the next few weeks and months.
+Obviously the user needs to run the app with their own chatGPT API key. 
