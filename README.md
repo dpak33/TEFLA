@@ -1,10 +1,10 @@
 To run once repo has been cloned and opened:
-cd backend
-pip install -r requirements.txt
-flask run
+cd backend,
+pip install -r requirements.txt,
+flask run,
 
-cd frontend
-npm install
+cd frontend,
+npm install,
 ng serve
 
 As it stands, the existing project represents a first iteration of a complex, modular application that is designed to automate the process of learning 
