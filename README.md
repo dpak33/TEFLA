@@ -1,3 +1,12 @@
+To run once repo has been cloned and opened:
+cd backend
+pip install -r requirements.txt
+flask run
+
+cd frontend
+npm install
+ng serve
+
 As it stands, the existing project represents a first iteration of a complex, modular application that is designed to automate the process of learning 
 English as a second language. It is built using Typescript and Angular on the frontend and Python combined with SQLAlchemy and Flask on the backend. 
 I've used Flask's blueprints to help organise the backend code into more modular, well-defined 'chunks'. In total, the project is constituted of several
