@@ -13,60 +13,64 @@ export class QuizComponent implements OnInit {
   questions: any[] = [];
   answers: { [key: string]: any } = {};
 
-  constructor(private quizService: QuizService, private userService: UserService, private router: Router) {}
+  constructor(
+    private quizService: QuizService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.quizService.getQuizQuestions().subscribe({
-      next: (data) => {
+      next: (data: any[]) => {
         this.questions = data;
       },
-      error: (error) => {
+      error: (error: any) => {
         console.error('Error fetching quiz questions:', error);
         // Handle the error appropriately
       }
     });
   }
 
-  submitQuiz(quizForm: NgForm) {
-  // Extract answers from the form
-  const answers = quizForm.value;
+  submitQuiz(quizForm: NgForm): void {
+    // Extract answers from the form
+    const answers = quizForm.value;
 
-  // Ensure user is defined
-  const user = this.userService.getCurrentUsername();
+    // Ensure user is defined
+    const user = this.userService.getCurrentUsername();
 
-  if (user) {
-    // Create a dynamic payload with user and answers
-    const payload = { user: { username: user }, answers };
+    if (user) {
+      // Create a dynamic payload with user and answers
+      const payload = { user: { username: user }, answers };
 
-    // Log the payload for inspection
-    console.log('Payload:', payload);
+      // Log the payload for inspection
+      console.log('Payload:', payload);
 
-    // Send the request
-    this.quizService.submitQuizAnswers(payload).subscribe({
-      next: (response) => {
-        console.log('Quiz evaluated:', response);
-        this.completeUserQuiz();
-        this.router.navigate(['/studyroom']);
-      },
-      error: (error) => {
-        console.error('Error submitting quiz:', error);
-        // Handle submission error appropriately
-      }
-    });
-  } else {
-    console.error('No user found');
+      // Send the request
+      this.quizService.submitQuizAnswers(payload).subscribe({
+        next: (response: any) => {
+          console.log('Quiz evaluated:', response);
+          this.completeUserQuiz();
+          this.router.navigate(['/studyroom']);
+        },
+        error: (error: any) => {
+          console.error('Error submitting quiz:', error);
+          // Handle submission error appropriately
+        }
+      });
+    } else {
+      console.error('No user found');
+    }
   }
-}
 
-  completeUserQuiz() {
+  completeUserQuiz(): void {
     const user = this.userService.getCurrentUsername();
     if (user) {
       this.quizService.completeQuiz(user).subscribe({
-        next: (response) => {
+        next: (response: any) => {
           console.log('Quiz completion status updated:', response);
           // Handle successful update of completion status
         },
-        error: (error) => {
+        error: (error: any) => {
           console.error('Error updating quiz completion status:', error);
           // Handle error in updating status
         }
@@ -76,4 +80,3 @@ export class QuizComponent implements OnInit {
     }
   }
 }
-
